@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Suara Surabaya</title>
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/detail.css">
+  </head>
+<body>
+    <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+        <button class="back-button" onclick="goBack()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z" fill="#1DA1F2" />
+          </svg>
+        </button>
+      </div>
+
+  <!-- Detail Container -->
+  <div class="content">
+    <div id="detail-container"></div>
+    <div class="actionPengguna">
+      <div onclick="toggleLike(this)">
+        <i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M8.81673 17.2917L9.34706 16.7613L9.31345 16.7277L9.27586 16.6986L8.81673 17.2917ZM15.9001 16.0417L15.1876 15.8074L15.1791 15.8333L15.1725 15.8598L15.9001 16.0417ZM17.9001 9.95835L17.1938 9.7061L17.1906 9.71506L17.1876 9.72411L17.9001 9.95835ZM12.1501 6.79168L11.409 6.67589L11.4076 6.68561L12.1501 6.79168ZM12.5667 4.12501L11.8346 3.96232L11.8294 3.98563L11.8257 4.00923L12.5667 4.12501ZM11.4834 2.29168L11.2201 2.99393L11.2331 2.9988L11.2462 3.00319L11.4834 2.29168ZM9.65007 2.87501L10.2725 3.29339L10.2741 3.29104L9.65007 2.87501ZM5.77427 15.8847L8.3576 17.8847L9.27586 16.6986L6.69253 14.6986L5.77427 15.8847ZM8.2864 17.822C8.58642 18.122 9.00224 18.2914 9.33986 18.3878C9.69584 18.4895 10.0776 18.5417 10.4001 18.5417V17.0417C10.2225 17.0417 9.97929 17.0105 9.75194 16.9455C9.50623 16.8753 9.38038 16.7947 9.34706 16.7613L8.2864 17.822ZM10.4001 18.5417H13.5667V17.0417H10.4001V18.5417ZM13.5667 18.5417C14.2465 18.5417 14.9195 18.2906 15.4575 17.897C15.9961 17.5029 16.4519 16.9265 16.6277 16.2236L15.1725 15.8598C15.0982 16.1568 14.8874 16.4555 14.5718 16.6864C14.2556 16.9178 13.887 17.0417 13.5667 17.0417V18.5417ZM16.6125 16.2759L18.6125 10.1926L17.1876 9.72411L15.1876 15.8074L16.6125 16.2759ZM18.6064 10.2106C18.8887 9.42001 18.7935 8.6119 18.3372 7.99261C17.8844 7.37812 17.1446 7.04168 16.3167 7.04168V8.54168C16.7388 8.54168 16.9991 8.70524 17.1296 8.88241C17.2566 9.05479 17.3281 9.33002 17.1938 9.7061L18.6064 10.2106ZM16.3167 7.04168H12.9834V8.54168H16.3167V7.04168ZM12.9834 7.04168C12.9436 7.04168 12.9209 7.02621 12.9104 7.01421C12.9049 7.00806 12.8992 6.99919 12.8951 6.98492C12.891 6.97101 12.886 6.94331 12.8925 6.89775L11.4076 6.68561C11.2579 7.73361 12.0401 8.54168 12.9834 8.54168V7.04168ZM12.8911 6.90746L13.3077 4.2408L11.8257 4.00923L11.4091 6.6759L12.8911 6.90746ZM13.2989 4.28771C13.5549 3.13573 12.8085 1.94282 11.7206 1.58017L11.2462 3.00319C11.6583 3.14054 11.9119 3.6143 11.8346 3.96232L13.2989 4.28771ZM11.7467 1.58943C11.2164 1.39055 10.6581 1.43464 10.1979 1.59283C9.74276 1.74929 9.30181 2.04532 9.02603 2.45899L10.2741 3.29104C10.3317 3.20471 10.474 3.08407 10.6855 3.01136C10.892 2.94039 11.0837 2.94281 11.2201 2.99393L11.7467 1.58943ZM9.0276 2.45664L5.61094 7.53997L6.85586 8.37672L10.2725 3.29339L9.0276 2.45664ZM2.7334 15.2917V7.12501H1.2334V15.2917H2.7334ZM2.7334 7.12501C2.7334 6.62619 2.84339 6.48807 2.88794 6.44695C2.94723 6.39222 3.12422 6.29168 3.65007 6.29168V4.79168C3.00925 4.79168 2.3529 4.89947 1.87052 5.34474C1.3734 5.80362 1.2334 6.45717 1.2334 7.12501H2.7334ZM3.65007 6.29168H4.4834V4.79168H3.65007V6.29168ZM4.4834 6.29168C5.00925 6.29168 5.18623 6.39222 5.24552 6.44695C5.29007 6.48807 5.40007 6.62619 5.40007 7.12501H6.90007C6.90007 6.45717 6.76006 5.80362 6.26294 5.34474C5.78056 4.89947 5.12422 4.79168 4.4834 4.79168V6.29168ZM5.40007 7.12501V15.2917H6.90007V7.12501H5.40007ZM5.40007 15.2917C5.40007 15.7905 5.29007 15.9286 5.24552 15.9697C5.18623 16.0245 5.00925 16.125 4.4834 16.125V17.625C5.12422 17.625 5.78056 17.5172 6.26294 17.072C6.76006 16.6131 6.90007 15.9595 6.90007 15.2917H5.40007ZM4.4834 16.125H3.65007V17.625H4.4834V16.125ZM3.65007 16.125C3.12422 16.125 2.94723 16.0245 2.88794 15.9697C2.84339 15.9286 2.7334 15.7905 2.7334 15.2917H1.2334C1.2334 15.9595 1.3734 16.6131 1.87052 17.072C2.3529 17.5172 3.00925 17.625 3.65007 17.625V16.125Z" fill="#EEEFF7"/>
+                </svg></i><span class="like-text"> Suka</span></div>
+              <div onclick="shareContent()"><i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M17.5002 9.54918L9.50016 4.25L9.50016 7.25C2.5 8.75 2.5 15.75 2.5 15.75C2.5 15.75 5.5 11.75 9.50016 12.25L9.50016 15.35L17.5002 9.54918Z" stroke="#EEEFF7" stroke-width="2" stroke-linejoin="round"/>
+                </svg></i> Bagikan</div>
+    </div>
+    <div id="description-container"></div>
+  </div>
+
+  <script>
+          fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+        function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+    // Ambil parameter dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const category = urlParams.get('category');
+const index = urlParams.get('index');
+
+// Fungsi untuk memuat data detail
+fetch('./data.json')
+  .then((response) => response.json())
+  .then((data) => {
+    let selectedItem;
+
+    // Ambil data sesuai kategori dan index
+    if (data[category] && data[category][index]) {
+      selectedItem = data[category][index];
+    } else {
+      document.getElementById('detail-container').innerHTML =
+        '<p>Detail not found.</p>';
+      return;
+    }
+
+    // Render data ke dalam container
+    const container = document.getElementById('detail-container');
+    container.innerHTML = `
+      <h2 class="detail-title">${selectedItem.title}</h2>
+      <p class="time">${selectedItem.time}</p>
+
+      <div class="detail-image">
+        <img src="${selectedItem.image}" alt="${selectedItem.title}">
+      </div>
+    `;
+    const container2 = document.getElementById('description-container');
+    container2.innerHTML = `
+      <div class="description">
+        <p>${selectedItem.detail || 'Tidak ada deskripsi.'}</p>
+      </div>
+    `;
+  })
+  
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+    document.getElementById('detail-container').innerHTML =
+      '<p>Error loading detail.</p>';
+  });
+
+  
+function toggleLike(button) {
+    const svgContainer = button.querySelector("i");
+    const likeText = button.querySelector(".like-text"); // Get the text element inside the button
+
+    // Add animation class to SVG container
+    svgContainer.classList.add("svg-animate");
+
+    // Check if the SVG path already matches the 'liked' version
+    if (svgContainer.innerHTML.includes('fill="#1DA1F2"')) {
+        // Replace with the unliked version (gray heart)
+        svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.81576 16.2916L8.34609 15.7612L8.31247 15.7276L8.27489 15.6985L7.81576 16.2916ZM14.8991 15.0416L14.1866 14.8073L14.1781 14.8332L14.1715 14.8597L14.8991 15.0416ZM16.8991 8.95823L16.1928 8.70597L16.1896 8.71494L16.1866 8.72398L16.8991 8.95823ZM11.1491 5.79156L10.408 5.67577L10.4066 5.68549L11.1491 5.79156ZM11.5658 3.12489L10.8336 2.96219L10.8284 2.98551L10.8247 3.00911L11.5658 3.12489ZM10.4824 1.29156L10.2191 1.99381L10.2321 1.99868L10.2453 2.00307L10.4824 1.29156ZM8.64909 1.87489L9.27156 2.29327L9.27313 2.29092L8.64909 1.87489ZM4.77329 14.8846L7.35663 16.8846L8.27489 15.6985L5.69155 13.6985L4.77329 14.8846ZM7.28543 16.8219C7.58544 17.1219 8.00126 17.2912 8.33888 17.3877C8.69486 17.4894 9.07665 17.5416 9.39909 17.5416V16.0416C9.22152 16.0416 8.97832 16.0104 8.75096 15.9454C8.50525 15.8752 8.3794 15.7945 8.34609 15.7612L7.28543 16.8219ZM9.39909 17.5416H12.5658V16.0416H9.39909V17.5416ZM12.5658 17.5416C13.2455 17.5416 13.9186 17.2905 14.4566 16.8968C14.9951 16.5028 15.451 15.9264 15.6267 15.2235L14.1715 14.8597C14.0972 15.1567 13.8864 15.4553 13.5708 15.6863C13.2546 15.9176 12.886 16.0416 12.5658 16.0416V17.5416ZM15.6116 15.2758L17.6116 9.19247L16.1866 8.72398L14.1866 14.8073L15.6116 15.2758ZM17.6054 9.21048C17.8877 8.41989 17.7925 7.61178 17.3362 6.99249C16.8834 6.378 16.1437 6.04156 15.3158 6.04156V7.54156C15.7378 7.54156 15.9981 7.70512 16.1286 7.88229C16.2556 8.05467 16.3271 8.32989 16.1928 8.70597L17.6054 9.21048ZM15.3158 6.04156H11.9824V7.54156H15.3158V6.04156ZM11.9824 6.04156C11.9426 6.04156 11.92 6.02608 11.9094 6.01409C11.904 6.00793 11.8982 5.99906 11.8941 5.98479C11.8901 5.97089 11.885 5.94319 11.8916 5.89762L10.4066 5.68549C10.2569 6.73349 11.0391 7.54156 11.9824 7.54156V6.04156ZM11.8901 5.90734L12.3068 3.24067L10.8247 3.00911L10.4081 5.67578L11.8901 5.90734ZM12.2979 3.28759C12.5539 2.13561 11.8076 0.942701 10.7196 0.580046L10.2453 2.00307C10.6573 2.14042 10.911 2.61417 10.8336 2.96219L12.2979 3.28759ZM10.7458 0.589312C10.2154 0.390427 9.65715 0.434514 9.19695 0.59271C8.74179 0.749172 8.30083 1.0452 8.02505 1.45887L9.27313 2.29092C9.33068 2.20459 9.47306 2.08395 9.68457 2.01124C9.89102 1.94027 10.0828 1.94269 10.2191 1.99381L10.7458 0.589312ZM8.02663 1.45652L4.60996 6.53985L5.85489 7.3766L9.27155 2.29327L8.02663 1.45652ZM1.73242 14.2916V6.12489H0.232422V14.2916H1.73242ZM1.73242 6.12489C1.73242 5.62607 1.84242 5.48795 1.88697 5.44683C1.94625 5.3921 2.12324 5.29156 2.64909 5.29156V3.79156C2.00827 3.79156 1.35192 3.89935 0.869545 4.34462C0.372427 4.8035 0.232422 5.45705 0.232422 6.12489H1.73242ZM2.64909 5.29156H3.48242V3.79156H2.64909V5.29156ZM3.48242 5.29156C4.00827 5.29156 4.18526 5.3921 4.24455 5.44683C4.28909 5.48795 4.39909 5.62607 4.39909 6.12489H5.89909C5.89909 5.45705 5.75908 4.8035 5.26197 4.34462C4.77959 3.89935 4.12324 3.79156 3.48242 3.79156V5.29156ZM4.39909 6.12489V14.2916H5.89909V6.12489H4.39909ZM4.39909 14.2916C4.39909 14.7904 4.28909 14.9285 4.24455 14.9696C4.18526 15.0244 4.00827 15.1249 3.48242 15.1249V16.6249C4.12324 16.6249 4.77959 16.5171 5.26197 16.0718C5.75908 15.613 5.89909 14.9594 5.89909 14.2916H4.39909ZM3.48242 15.1249H2.64909V16.6249H3.48242V15.1249ZM2.64909 15.1249C2.12324 15.1249 1.94625 15.0244 1.88697 14.9696C1.84242 14.9285 1.73242 14.7904 1.73242 14.2916H0.232422C0.232422 14.9594 0.372427 15.613 0.869545 16.0718C1.35192 16.5171 2.00827 16.6249 2.64909 16.6249V15.1249Z" fill="#EEEFF7"/>
+            </svg>
+        `;
+
+        // Change the text color back to the default (unliked)
+        likeText.style.color = "#EEEFF7";
+    } else {
+        // Replace with the liked version (blue heart)
+        svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 16" fill="none">
+              <path d="M5.23242 13.2916L7.81576 15.2916C8.14909 15.6249 8.89909 15.7916 9.39909 15.7916H12.5658C13.5658 15.7916 14.6491 15.0416 14.8991 14.0416L16.8991 7.95823C17.3158 6.79156 16.5658 5.79156 15.3158 5.79156H11.9824C11.4824 5.79156 11.0658 5.37489 11.1491 4.79156L11.5658 2.12489C11.7324 1.37489 11.2324 0.541559 10.4824 0.291559C9.81576 0.0415587 8.98242 0.374892 8.64909 0.874892L5.23242 5.95823" fill="#1DA1F2"/>
+              <path d="M0.982422 13.2916V5.12489C0.982422 3.95823 1.48242 3.54156 2.64909 3.54156H3.48242C4.64909 3.54156 5.14909 3.95823 5.14909 5.12489V13.2916C5.14909 14.4582 4.64909 14.8749 3.48242 14.8749H2.64909C1.48242 14.8749 0.982422 14.4582 0.982422 13.2916Z" fill="#1DA1F2"/>
+            </svg>
+        `;
+
+        // Change the text color to blue (liked)
+        likeText.style.color = "#1DA1F2";
+    }
+}
+
+function shareContent() {
+  const title = "Suara Surabaya - Kawan SS";  // Title of the content
+  const url = window.location.href;  // Current URL to share
+
+  event.stopPropagation(); 
+
+  // Check if the Web Share API is supported by the browser
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      url: url,
+    })
+    .then(() => console.log('Sharing was successful!'))
+    .catch((error) => console.log('Sharing failed', error));
+  } else {
+    // Fallback for browsers that do not support Web Share API
+    const shareText = encodeURIComponent(`${title} - ${url}`);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
+    const whatsappUrl = `https://wa.me/?text=${shareText}`;
+
+    // Prompt user with sharing options
+    if (confirm("Bagikan melalui Twitter?")) {
+      window.open(twitterUrl, "_blank");
+    } else if (confirm("Bagikan melalui WhatsApp?")) {
+      window.open(whatsappUrl, "_blank");
+    }
+  }
+}
+
+
+  </script>
+</body>
+</html>

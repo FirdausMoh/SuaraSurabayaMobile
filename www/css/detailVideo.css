@@ -1,0 +1,81 @@
+body {
+    font-family: 'Poppins';
+    background-color: #1F1D2B;
+    color: #EEEFF7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+.videocontain{
+    padding-top: 150px;
+    width: 100%;
+    
+}
+#video-container #videoStream{
+    width: 100%;
+    height: 230px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px; 
+    flex: 1;
+    position: fixed;
+    bottom: 0;
+}
+
+.detail-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    width: 412px;
+    padding-right: 20px;
+}
+
+.time {
+    font-size: 12px;
+    color: #B1B1B1;
+    margin-bottom: 20px;
+}
+
+.actionPengguna {
+    display: flex;
+    gap: 24px;
+    color: #B1B1B1;
+    padding-top: 8px;
+    padding-bottom: 24px;
+}
+.description p {
+    font-size: 14px;
+    line-height: 1.6; 
+}
+
+.back-button-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 74px;
+}
+
+/* Tombol back */
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+

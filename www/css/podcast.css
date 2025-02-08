@@ -1,0 +1,125 @@
+body {
+    background-color: #1F1D2B;
+    font-family: Poppins;
+}
+
+.button-scroll-container {
+    display: flex;
+    overflow-x: auto; /* Memungkinkan scroll horizontal */
+    white-space: nowrap; /* Mencegah tombol turun ke bawah */
+    padding: 10px; /* Jarak padding luar */
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    position: fixed; /* Membuat tombol selalu terlihat */
+    top: 0; /* Posisi tombol di bagian atas */
+    left: 0;
+    right: 0;
+    background-color: #1F1D2B; /* Warna latar belakang */
+    z-index: 1000; /* Agar berada di atas elemen lain */
+}
+
+/* Hilangkan scrollbar di Webkit (Chrome, Safari, dll.) */
+.button-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Wrapper tombol */
+.button-wrapper {
+    display: flex;
+    gap: 12px; 
+    margin-left: 10px;
+}
+/* Tombol */
+.custom-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 36px;
+    background: #2F3142;
+    color: #EEEFF7;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* Mencegah teks tombol melipat */
+    transition: background-color 0.3s ease;
+}
+
+/* Style tombol aktif */
+.custom-button.active {
+    background: #0c85d0; /* Warna berbeda untuk tombol aktif */
+    color: #ffffff; /* Warna teks */
+}
+
+.actionPengguna{
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px;
+    color: #B1B1B1;
+}
+#podcast-container{
+margin-top: 110px; 
+display: flex; 
+flex-wrap: wrap; 
+padding-bottom: 80px;
+overflow-y: auto;
+}
+.podcast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    padding: 10px 0;
+    border-radius: 8px;
+    width: 177px;
+    height: 265px;
+    margin: 16px auto;
+  }
+  
+  .podcast-image {
+    width: 177px;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  
+  .podcast-image img {
+    width: 177px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .podcast-title {
+    color: #FFF;
+font-family: poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: 16px; /* 123.077% */
+letter-spacing: 0.3px;
+margin-top: 14px;
+margin-bottom: 16px;
+  }
+  
+  .podcast-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #E5E5E5;
+    font-size: 12px;
+  }
+  
+  .podcast-actions span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .podcast-actions i {
+    font-size: 14px;
+  }
+  

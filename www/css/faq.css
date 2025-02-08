@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    scrollbar-width: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1F1D2B;
+    color: #fff;
+}
+
+.back-button-container {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 74px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #1da1f2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #2A2D3E;
+}
+
+.tab {
+    font-size: 14px;
+    padding: 10px 0;
+    color: #666;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.tab.active {
+    color: #1DA1F2;
+    border-bottom: 2px solid #1DA1F2;
+}
+
+.faq-card {
+    background-color: #1F1D2B;
+    margin-top: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+}
+
+.faq-card .question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-transform: capitalize;
+    padding: 15px;
+    border-radius: 8px;
+    background: #252836;
+    transition: color 0.3s ease;
+}
+
+.faq-card .answer {
+    font-size: 12px;
+    color: #f5f5f5;
+    display: none;
+    padding: 15px;
+    background-color: #2F3142;
+}
+
+.faq-card.open .answer {
+    display: block;
+}
+
+.faq-card.open .question svg {
+    transform: rotate(180deg);
+}
+
+.hubungi-container {
+    margin-top: 20px;
+}
+
+#contact {
+    height: 478px;
+    padding: 16px 8px;
+    background-color: #252836;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers items vertically */
+    align-items: center; /* Centers items horizontally */
+    border-radius: 8px;
+    margin-top: 36px;
+  }  
+
+.hubungi-input {
+    display: flex;
+    height: 384px;
+    padding: 20px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 100px;
+    align-self: stretch;
+    width: 100%;
+    border-radius: 6px;
+    background: #2F3142;
+    border-width: 0; /* Remove the border width */
+    font-family: Poppins;
+    color: var(--Gray, #8391A1);
+    outline: none; /* Remove the outline */  
+}
+.hubungi-input:focus {
+    border: none;  /* Remove the border on focus */
+    outline: none; /* Remove the outline on focus */
+}
+.hubungi-submit {
+    display: flex;
+    width: 100%;
+    height: 56px;
+    padding: 11px 127px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #1DA1F2;
+    color: #EEEFF7;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 16px;
+}
+
+.hubungi-submit:hover {
+    background-color: #0c85d0;
+}
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    flex-direction: column; /* Atur spinner dan teks secara vertikal */
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-spinner {
+    border: 8px solid rgba(255, 255, 255, 0.8); /* Warna border lebih terang */
+    border-top: 8px solid #1da1f2; /* Warna biru pada bagian atas */
+    border-radius: 50%;
+    width: 80px; /* Lebar spinner */
+    height: 80px; /* Tinggi spinner */
+    animation: spin 1s linear infinite; /* Animasi berputar */
+    margin-bottom: 15px; /* Jarak antara spinner dan teks */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #B6E9FF;
+    margin-top: 0; /* Pastikan tidak ada jarak tambahan */
+    text-align: center;
+}
+
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0D0F1C;
+    width: 331px;
+    height: 224px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    overflow: visible;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-header {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.check-icon {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.popup-body .message {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 55px;
+    font-weight: 500;
+    margin-top: 90px;
+  }
+
+.popup-body .close-button {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 144px;
+    height: 38px;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.popup-body .close-button:hover {
+    background-color: #0c85d0;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+}
+
+.popup-overlay.active {
+    display: block;
+}

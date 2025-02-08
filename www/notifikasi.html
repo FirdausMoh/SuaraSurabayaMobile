@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifikasi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Menghapus navbar -->
+    <div class="header">
+      <div class="header-icon" >
+        <i class="fas fa-bell" onclick="goBack()"></i>
+      </div>
+      <div class="header-title">Notifikasi</div>
+    </div>
+
+    <div class="notification-list">
+      <div class="notification-item">
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+        </div>
+        <div class="notification-content">
+          <div class="notification-title">Kontributor</div>
+          <div class="notification-message">
+            Postingan anda dikomentari oleh Bambang
+          </div>
+        </div>
+        <div class="notification-time">1 Jam Lalu</div>
+      </div>
+
+      <div class="notification-item">
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+        </div>
+        <div class="notification-content">
+          <div class="notification-title">Kontributor</div>
+          <div class="notification-message">
+            Postingan anda dikomentari oleh Bambang
+          </div>
+        </div>
+        <div class="notification-time">1 Jam Lalu</div>
+      </div>
+    </div>
+    
+    <div class="notification-container" id="notificationContainer">
+      <!-- Notifikasi akan ditambahkan di sini -->
+    </div>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1f1d2b;
+        color: #fff;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        background-color: #212436;
+        padding: 10px 20px;
+        color: #eeeff7;
+        font-family: Poppins, sans-serif;
+        height: 44px;
+      }
+
+      .header-icon {
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .header-title {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .notification-container {
+        padding: 20px;
+      }
+
+      .notification-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+      }
+
+      .notification-item p {
+        margin: 0;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .notification-item .delete-button {
+        background-color: #ff4d4d;
+        border: none;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .notification-item .delete-button:hover {
+        background-color: #e60000;
+      }
+
+      .no-notifications {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #ccc;
+      }
+      .notification-list {
+  padding: 15px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.notification-icon {
+  font-size: 16px;
+  color: #1DA1F2;
+  margin-right: 10px;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #EEEFF7;
+  margin-bottom: 4px;
+}
+
+.notification-message {
+  font-size: 12px;
+  color: #B6E9FF;
+}
+
+.notification-time {
+  font-size: 10px;
+  color: #666;
+}
+
+    </style>
+
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    </script>
+  </body>
+</html>

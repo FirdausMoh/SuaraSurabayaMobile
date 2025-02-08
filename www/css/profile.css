@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+
+
+body {
+    background-color: #1F1D2B;
+    color: white;
+}
+
+.profile-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-button-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.profile-details {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.profile-location,
+.profile-contact {
+    font-size: 14px;
+    color: #bbb;
+    margin: 2px 0;
+}
+
+.activity-section {
+    margin: 20px 0;
+}
+
+.activity-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.activity-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    background-color: #252836;
+    padding: 24px;
+    border-radius: 10px;
+}
+
+.activity-item {
+    text-align: center;
+    color: #f5f5f5;
+    width: 60px;
+    height: 72px;
+}
+
+.activity-item i {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #1DA1F2;
+}
+
+.activity-item p {
+    margin: 0;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+    letter-spacing: -0.5px;
+}
+
+.activity-item span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #f5f5f5;
+}
+
+.links-section {
+    margin-top: 20px;
+}
+
+.profile-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    color: #1DA1F2;
+}

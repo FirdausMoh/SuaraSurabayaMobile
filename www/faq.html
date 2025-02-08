@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/faq.css">
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+            fill="#1DA1F2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(event, 'faqs')">FAQs</div>
+            <div class="tab" onclick="switchTab(event, 'contact')">Hubungi Kami</div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div id="faqs" style="margin-top: 36px;">
+            <div class="faq-card">
+                <div class="question">
+                    Bagaimana Cara Melaporkan Kejadian Ke Suara Surabaya?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3.77 6.23L2 8L12 18L22 8L20.23 6.23L12 14.46L3.77 6.23Z" fill="#EEEFF7"/>
+                      </svg>
+                </div>
+                <div class="answer">Anda dapat melaporkan kejadian dengan menggunakan menu + di aplikasi untuk melakukan panggilan audio atau video.</div>
+            </div>
+            <div class="faq-card">
+                <div class="question">
+                    Bagaimana Cara Agar Saya Dapat Terhubung Dengan Penyiar?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3.77 6.23L2 8L12 18L22 8L20.23 6.23L12 14.46L3.77 6.23Z" fill="#EEEFF7"/>
+                      </svg>
+                </div>
+                <div class="answer">Anda dapat terhubung dengan penyiar melalui gatekeeper dengan panggilan audio atau video.</div>
+            </div>
+            <div class="faq-card">
+                <div class="question">
+                    Apa Yang Harus Saya Lakukan Jika Lupa Kata Sandi?
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3.77 6.23L2 8L12 18L22 8L20.23 6.23L12 14.46L3.77 6.23Z" fill="#EEEFF7"/>
+                      </svg>
+                </div>
+                <div class="answer">Tekan tombol lupa kata sandi pada halaman login. Instruksi akan dikirimkan ke email Anda.</div>
+            </div>
+        </div>
+
+        <!-- Contact Section (Hidden) -->
+        <div id="contact" style="display: none;">
+            <textarea class="hubungi-input" placeholder="Apa yang ingin Anda tanyakan?" style="border-width: 0px;"></textarea>
+            <button class="hubungi-submit" onclick="sendMessage()">Kirim</button>
+        </div>
+    </div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Tunggu</p>
+    </div>
+    
+
+<!-- Popup Success Message -->
+<div id="popupOverlay" class="popup-overlay"></div>
+<div id="successPopup" class="popup">
+    <div class="popup-header">
+        <div class="check-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 80 81" fill="none">
+                <circle cx="40" cy="40.5" r="35" fill="#1BA354" style="stroke-width: 3px;
+                stroke: #EEEFF7;"/>
+                <path d="M34 50L26 42L28.5 39.5L34 45L51.5 27.5L54 30L34 50Z" fill="white" />
+            </svg>
+        </div>
+    </div>
+    <div class="popup-body">
+        <p class="message">Berhasil Terkirim</p>
+        <button class="close-button" onclick="closePopup()">Kembali</button>
+    </div>
+</div>
+
+
+    <script>
+        fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function switchTab(event, tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('faqs').style.display = tabId === 'faqs' ? 'block' : 'none';
+            document.getElementById('contact').style.display = tabId === 'contact' ? 'block' : 'none';
+        }
+
+        document.querySelectorAll('.faq-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('open');
+            });
+        });
+        function sendMessage() {
+    // Menampilkan loading overlay
+    document.getElementById('loadingOverlay').classList.add('active');
+
+    // Simulasi pengiriman (2 detik)
+    setTimeout(() => {
+        // Sembunyikan loading overlay
+        document.getElementById('loadingOverlay').classList.remove('active');
+
+        // Tampilkan popup sukses
+        document.getElementById('popupOverlay').classList.remove('hidden');
+        document.getElementById('successPopup').classList.add('active');
+    }, 2000);
+}
+
+function closePopup() {
+    // Menyembunyikan popup sukses
+    document.getElementById('popupOverlay').classList.add('hidden');
+    document.getElementById('successPopup').classList.remove('active');
+}
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    scrollbar-width: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1F1D2B;
+    color: #fff;
+}
+
+.back-button-container {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 74px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #1da1f2;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #333;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    color: #1da1f2;
+    border-bottom: 2px solid #1da1f2;
+}
+
+.content-container {
+    padding-top: 20px;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.file-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.file-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.file-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.file-size {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.file-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.play-button,
+.delete-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.play-button:hover {
+    color: #1da1f2;
+}
+
+.delete-button:hover {
+    color: #ff4d4d;
+}
+
+.no-file {
+    text-align: center;
+    font-size: 18px;
+    color: #ccc;
+}

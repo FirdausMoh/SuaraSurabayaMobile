@@ -1,0 +1,141 @@
+body {
+    background-color: #1F1D2B;
+    font-family: Poppins;
+}
+
+content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin-top: 60px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card {
+    background-color: #1F1D2B;
+    overflow: hidden;
+    border: none;
+    color: #EEEFF7;
+    width: 100%;
+}
+
+.card-image {
+    width: 372px;
+    height: 230px;
+    object-fit: cover;
+    margin-bottom: 16px; /* Jarak dari gambar ke konten */
+}
+
+.card-body {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Jarak antar elemen dalam card-body */
+}
+
+.category {
+    width: fit-content;
+    padding: 6px;
+    align-items: center;
+    gap: 4px;
+    border-radius: 8px;
+    background: #0B7A82;
+    color: #EEEFF7;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 16.8px */
+    letter-spacing: 0.12px;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0;
+}
+
+.description {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #1a1a1d;
+    border-top: 1px solid #555;
+    margin-top: 12px; /* Jarak dari konten ke tombol aksi pengguna */
+}
+
+/* Style untuk Tombol */
+/* Container untuk tombol scroll */
+.button-scroll-container {
+    display: flex;
+    overflow-x: auto; /* Memungkinkan scroll horizontal */
+    padding: 10px; /* Jarak padding luar */
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+    position: fixed; /* Membuat tombol selalu terlihat */
+    top: 0; /* Posisi tombol di bagian atas */
+    left: 0;
+    right: 0;
+    background-color: #1F1D2B; /* Warna latar belakang */
+    z-index: 1000;
+}
+
+/* Hilangkan scrollbar di Webkit (Chrome, Safari, dll.) */
+.button-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Wrapper tombol */
+.button-wrapper {
+    display: flex;
+    gap: 12px; 
+    margin-left: 10px;
+}
+/* Tombol */
+.custom-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 36px;
+    background: #2F3142;
+    color: #EEEFF7;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap; /* Mencegah teks tombol melipat */
+    transition: background-color 0.3s ease;
+}
+
+/* Style tombol aktif */
+.custom-button.active {
+    background: #0c85d0; /* Warna berbeda untuk tombol aktif */
+    color: #ffffff; /* Warna teks */
+}
+
+.actionPengguna {
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px;
+    color: #B1B1B1;
+}
+

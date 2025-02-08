@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Page</title>
+    <!-- Tambahkan CDN Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Search Bar with Back Button -->
+    <div class="search-bar-container">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-search" style="color: #eeeff7"></i>
+      </button>
+      <div class="search-bar">
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Search"
+          oninput="debouncedSearch()"
+        />
+      </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+      <div class="loading-spinner" id="loadingSpinner"></div>
+      <p class="loading-text" id="loadingText">Loading</p>
+    </div>
+
+    <!-- Results Container -->
+    <div class="results-container" id="resultsContainer"></div>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1f1d2b;
+        color: #fff;
+        height: 100vh; /* Menjamin tinggi layar terisi penuh */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .search-bar-container {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        width: 372px;
+        background-color: #212436;
+        position: fixed;
+        overflow: hidden;
+        border-bottom: 1px solid #c0dce7;
+      }
+
+      .back-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-right: 10px;
+        font-size: 24px;
+      }
+
+      .search-bar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .search-input {
+        width: 90%;
+        height: 36px;
+        padding-left: 8px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        background-color: #f4f4f4;
+        color: #000;
+      }
+
+      .loading {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        flex-direction: column;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .loading.active {
+        display: flex;
+      }
+
+      .loading-spinner {
+        display: none;
+        border: 8px solid rgba(255, 255, 255, 0.8); /* Warna border lebih terang */
+        border-top: 8px solid #04587C; /* Warna biru pada bagian atas */
+        border-radius: 50%;
+        width: 60px; /* Lebar spinner */
+        height: 60px; /* Tinggi spinner */
+        animation: spin 1s linear infinite; /* Animasi berputar */
+        margin-bottom: 10px; /* Jarak antara spinner dan teks */
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        display: none;
+        color: #B6E9FF;
+text-align: center;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.4px;
+
+      }
+
+      .loading.active .loading-spinner {
+        display: block;
+      }
+
+      .loading.active .loading-text {
+        display: block;
+      }
+
+      .results-container {
+        padding: 20px;
+        flex: 1;
+        margin-top: 60px;
+      }
+
+      .result-item {
+        margin-bottom: 15px;
+      }
+
+      .result-item span {
+        font-weight: bold;
+        color: #1da1f2;
+      }
+
+      .no-results {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 18px;
+        color: #ccc;
+      }
+    </style>
+
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+      let timeout = null;
+      function debouncedSearch() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          performSearch();
+        }, 500);
+      }
+
+      function performSearch() {
+        const query = document.getElementById("searchInput").value.trim();
+        const loading = document.getElementById("loading");
+        const loadingSpinner = document.getElementById("loadingSpinner");
+        const loadingText = document.getElementById("loadingText");
+        const resultsContainer = document.getElementById("resultsContainer");
+
+        // Jika query kosong, sembunyikan loading dan hasil
+        if (!query) {
+          resultsContainer.innerHTML = "";
+          loading.classList.remove("active");
+          return;
+        }
+
+        resultsContainer.innerHTML = "";
+        loading.classList.add("active"); // Tampilkan spinner
+
+        setTimeout(() => {
+          loading.classList.remove("active"); // Sembunyikan spinner setelah data dimuat
+          const data = [
+            {
+              category: "Potret Kelana Kota",
+              time: "14 Jam Lalu",
+              title: "Merayakan Malam Tahun Baru 2025 Di Balai Kota Surabaya",
+            },
+            {
+              category: "News",
+              time: "18 Jam Lalu",
+              title: "Taman Suroboyo Buka 24 Jam Khusus Malam Tahun Baru",
+            },
+          ];
+
+          const results = data.filter((item) =>
+            item.title.toLowerCase().includes(query.toLowerCase())
+          );
+
+          if (results.length > 0) {
+            results.forEach((result) => {
+              const div = document.createElement("div");
+              div.className = "result-item";
+              div.innerHTML = `
+                    <span>${result.category}</span>
+                    <p>${result.time}</p>
+                    <p>${result.title}</p>
+                `;
+              resultsContainer.appendChild(div);
+            });
+          } else {
+            resultsContainer.innerHTML =
+              '<p class="no-results">No File Found</p>';
+          }
+        }, 1500); // Simulasi waktu pemrosesan pencarian
+      }
+    </script>
+  </body>
+</html>

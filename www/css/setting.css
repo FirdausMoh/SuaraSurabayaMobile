@@ -1,0 +1,226 @@
+body {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    background: #1F1D2B;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+.main-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 80px;
+    border-radius: 10px;
+
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2A2D3E;
+
+}
+
+.profile-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    margin-left: 15px;
+}
+
+.profile-info h3 {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.9px;
+    margin: 0;
+
+}
+
+.profile-info p {
+    color: #777676;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.63px;
+    margin: 0;
+}
+
+.section-title {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    margin-bottom: 15px;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    cursor: pointer;
+    color: var(--Gray, #8C8F99);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    /* Susun teks utama dan subtitle secara vertikal */
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 4px;
+    text-transform: none;
+    /* Jarak kecil di bawah teks utama */
+}
+
+.radio-container input {
+    display: none;
+    /* Sembunyikan radio button default */
+}
+
+.radio-container .checkmark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* Adding the SVG checkmark inside the circle when checked */
+.radio-container input:checked + .checkmark::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"%3E%3Cg clip-path="url(%23clip0_789_13337)"%3E%3Cpath d="M12 22.5C9.21523 22.5 6.54451 21.3938 4.57538 19.4246C2.60625 17.4555 1.5 14.7848 1.5 12C1.5 9.21523 2.60625 6.54451 4.57538 4.57538C6.54451 2.60625 9.21523 1.5 12 1.5C14.7848 1.5 17.4555 2.60625 19.4246 4.57538C21.3938 6.54451 22.5 9.21523 22.5 12C22.5 14.7848 21.3938 17.4555 19.4246 19.4246C17.4555 21.3938 14.7848 22.5 12 22.5ZM12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 8.8174 22.7357 5.76516 20.4853 3.51472C18.2348 1.26428 15.1826 0 12 0C8.8174 0 5.76516 1.26428 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24Z" fill="%23428BB3"%2F%3E%3Cpath d="M16.4545 7.45493L16.4245 7.48793L11.215 14.1254L8.07553 10.9844C7.86227 10.7857 7.5802 10.6775 7.28875 10.6827C6.9973 10.6878 6.71922 10.8059 6.5131 11.012C6.30698 11.2181 6.18891 11.4962 6.18377 11.7876C6.17863 12.0791 6.28681 12.3612 6.48553 12.5744L10.4545 16.5449C10.5615 16.6517 10.6888 16.7358 10.8289 16.7922C10.969 16.8487 11.1191 16.8763 11.2702 16.8735C11.4212 16.8707 11.5701 16.8375 11.7081 16.7759C11.846 16.7143 11.9701 16.6256 12.073 16.5149L18.061 9.02993C18.2649 8.81593 18.3764 8.53028 18.3714 8.23473C18.3663 7.93919 18.2452 7.6575 18.0341 7.45057C17.823 7.24364 17.539 7.1281 17.2434 7.12891C16.9478 7.12973 16.6645 7.24684 16.4545 7.45493Z" fill="%23428BB3"%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath id="clip0_789_13337"%3E%3Crect width="24" height="24" fill="white"%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E') no-repeat center;
+    background-size: contain;
+}
+
+.settings-section {
+    margin-top: 20px;
+}
+
+.setting-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 15px 0;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.72px;
+}
+
+.setting-link:hover {
+    color: #f5f5f5;
+}
+
+.flash-message {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1A1C2E;
+    color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    bottom: 400px;
+    display: none;
+    /* Awalnya tersembunyi */
+}
+
+.flash-message h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.flash-message p {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.flash-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flash-buttons button {
+    border: none;
+    background: none;
+    color: #428BB3;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.flash-buttons button:hover {
+    text-decoration: underline;
+}
+
+/* Overlay untuk blur */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    /* Blur effect */
+    -webkit-backdrop-filter: blur(5px);
+    /* Safari support */
+    z-index: 998;
+    /* Di bawah flash message */
+    display: none;
+    /* Awalnya tersembunyi */
+}
+
+/* Flash message tetap di atas overlay */
+.flash-message {
+    z-index: 999;
+}

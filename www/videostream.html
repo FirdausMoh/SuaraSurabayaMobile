@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Suara Surabaya - Video Streaming</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/framework7@6.0.0/dist/css/framework7.bundle.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/videostream.css" />
+
+  </head>
+  <body>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+            fill="#1DA1F2"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="video-container">
+      <video id="videoStream" controls>
+        <source src="./img/image 6.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <!-- Record Timer -->
+      <div class="record-timer" id="recordTimer">
+        <div class="dot"></div>
+        <span id="timer">00:00</span>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="control-buttons">
+      <button class="control-button" id="playPauseButton">
+        <i class="fas fa-play"></i>
+        <span>Mainkan</span>
+      </button>
+      <a href="stream.html" style="text-decoration: none;">
+        <button class="control-button">
+          <i class="fas fa-headphones"></i>
+          <span>Audio</span>
+        </button>
+      </a>
+      
+    </div>
+
+    <!-- Jadwal -->
+    <div class="schedule-container">
+      <div class="schedule-header" id="scheduleHeader" onclick="toggleSchedule()">
+          <span class="schedule-title">Jadwal Hari Ini</span>
+          <i class="fas fa-chevron-down" id="chevronIcon"></i>
+      </div>
+      <div class="schedule-list" id="scheduleList" style="display: none;">
+          <div class="schedule-item">
+              <div class="schedule-info">
+                  <span class="program-title-active">Potret Kelana Kota</span>
+                  <span class="time">07.00</span>
+              </div>
+              <span class="status live">Live</span>
+          </div>
+          <div class="schedule-item">
+              <div class="schedule-info">
+                  <span class="program-title">Kawan SS</span>
+                  <span class="time">08.00</span>
+              </div>
+              <span class="status upcoming">Upcoming</span>
+          </div>
+          <div class="schedule-item">
+              <div class="schedule-info">
+                  <span class="program-title">Potret Netter</span>
+                  <span class="time">10.00</span>
+              </div>
+              <span class="status upcoming">Upcoming</span>
+          </div>
+      </div>
+    </div>
+
+      <!-- Banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <img src="./img/profile.webp" alt="Penyiar" class="banner-avatar">
+            <div class="banner-info">
+                <p class="banner-name">Arif Kuswardaya</p>
+                <p class="banner-status">
+                    <span class="live-dot"></span> Live Now
+                </p>
+            </div>
+            <button class="banner-button">Rekam</button>
+        </div>
+    </div>
+    <div class="chat-header" style="background-color: #252836; padding: 16px;margin-top: 8px;">
+      <h3 style="color: #FFF; font-family: Poppins; font-size: 16px; font-weight: 600; text-transform: capitalize;">Live Chat</h3>
+  </div>
+    <!-- Live Chat Section -->
+    <div class="live-chat">
+        <div class="chat-messages" id="chatMessages">
+            <div class="message">
+                <img src="./img/miftah.jpg" alt="User Avatar">
+                <div class="message-content">
+                    <strong>Bambang</strong>
+                    <p>Suara Surabaya radio terbaik</p>
+                </div>
+            </div>
+            <div class="message">
+                <img src="./img/wahibatul.jpg" alt="User Avatar">
+                <div class="message-content">
+                    <strong>Siti</strong>
+                    <p>Salam buat kak Desi, selamat pagi dan semangat menjalani hari</p>
+                </div>
+            </div>
+            <div class="message">
+                <img src="./img/miftah.jpg" alt="User Avatar">
+                <div class="message-content">
+                    <strong>Bambang</strong>
+                    <p>Surabaya Pagi Pagi Macet</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Tuliskan Pesan" style="padding: 16px;">
+            <button id="sendButton">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+        const chatMessages = document.getElementById("chatMessages");
+        const chatInput = document.getElementById("chatInput");
+        const sendButton = document.getElementById("sendButton");
+
+        sendButton.addEventListener("click", () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                const newMessage = document.createElement("div");
+                newMessage.classList.add("message");
+                newMessage.innerHTML = `
+                    <img src="./img/profile.webp" alt="User Avatar">
+                    <div class="message-content">
+                        <strong>You</strong>
+                        <p>${message}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(newMessage);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        function toggleSchedule() {
+            const scheduleList = document.getElementById("scheduleList");
+            const chevronIcon = document.getElementById("chevronIcon");
+
+            if (scheduleList.style.display === "none") {
+                scheduleList.style.display = "block";
+                chevronIcon.classList.remove("fa-chevron-down");
+                chevronIcon.classList.add("fa-chevron-up");
+            } else {
+                scheduleList.style.display = "none";
+                chevronIcon.classList.remove("fa-chevron-up");
+                chevronIcon.classList.add("fa-chevron-down");
+            }
+        }
+
+        const recordButton = document.querySelector('.banner-button');
+        const recordTimer = document.getElementById('recordTimer');
+        const timerSpan = document.getElementById('timer');
+
+        let isRecording = false;
+        let seconds = 0;
+        let interval;
+
+        recordTimer.style.display = 'none';
+
+        recordButton.addEventListener('click', () => {
+            if (isRecording) {
+                clearInterval(interval);
+                recordTimer.style.display = 'none';
+                recordButton.textContent = 'Rekam';
+                isRecording = false;
+                seconds = 0;
+                timerSpan.textContent = '00:00';
+            } else {
+                recordTimer.style.display = 'flex';
+                recordButton.textContent = 'Berhenti';
+                isRecording = true;
+
+                interval = setInterval(() => {
+                    seconds++;
+                    const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+                    const secs = (seconds % 60).toString().padStart(2, '0');
+                    timerSpan.textContent = `${minutes}:${secs}`;
+                }, 1000);
+            }
+        });
+
+        const playPauseButton = document.getElementById("playPauseButton");
+      const videoStream = document.getElementById("videoStream");
+
+      playPauseButton.addEventListener("click", () => {
+        if (videoStream.paused) {
+          videoStream.play();
+          playPauseButton.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
+        } else {
+          videoStream.pause();
+          playPauseButton.innerHTML = '<i class="fas fa-play"></i><span>Mainkan</span>';
+        }
+      });
+    </script>
+</body>
+</html>

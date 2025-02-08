@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podcast Player</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/playerpod.css" />
+  </head>
+
+  <body>
+    <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+            fill="#1DA1F2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="podcast-container">
+      <img
+        src=""
+        alt="Podcast Cover"
+        class="podcast-image"
+        id="podcast-image"
+      />
+      <p class="podss">PODSS</p>
+      <p class="podcast-title" id="podcast-title"></p>
+      <div class="podcast-controls">
+        <div class="progress-bar">
+          <input type="range" min="0" max="100" value="0" id="progress-bar" />
+        </div>
+      </div>
+      <div class="times">
+        <span class="time" id="current-time">00:00</span>
+        <span class="time" id="duration">00:00</span>
+      </div>
+
+      <div class="buttonControl">
+            <i id="prev-button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                <path d="M4.32576 7.95522C3.70826 7.56227 3.70825 6.66085 4.32575 6.2679L12.4631 1.08957C13.1288 0.665928 14 1.14414 14 1.93323V12.2899C14 13.079 13.1288 13.5572 12.4631 13.1335L4.32576 7.95522Z" fill="white"/>
+                <rect width="2" height="14" rx="1" transform="matrix(-1 0 0 1 2 0.111328)" fill="white"/>
+              </svg>
+            </i>
+            <button class="play-button" id="play-button">
+                <i class="fas fa-play"></i>
+              </button>
+            <i id="next-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <path d="M14.6742 12.9552C15.2917 12.5623 15.2917 11.6609 14.6742 11.2679L6.53688 6.08957C5.87115 5.66593 5 6.14414 5 6.93323V17.2899C5 18.079 5.87115 18.5572 6.53688 18.1335L14.6742 12.9552Z" fill="white"/>
+                <rect x="17" y="5.11133" width="2" height="14" rx="1" fill="white"/>
+              </svg>
+            </i>
+      </div>
+    </div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const podcastIndex = urlParams.get("podcast");
+      let podcastData = []; // Simpan data podcast secara global
+let audio = new Audio();
+
+fetch("./data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    podcastData = data.podcast; // Simpan data podcast
+
+    if (podcastIndex !== null && podcastData[podcastIndex]) {
+      const podcast = podcastData[podcastIndex];
+
+      document.getElementById("podcast-image").src = podcast.image;
+      document.getElementById("podcast-title").textContent = podcast.title;
+
+      audio.src = podcast.audio;
+
+      const playButton = document.getElementById("play-button");
+      let isPlaying = false;
+
+      playButton.addEventListener("click", () => {
+        if (isPlaying) {
+          audio.pause();
+        } else {
+          audio.play();
+        }
+        isPlaying = !isPlaying;
+        playButton.querySelector("i").className = isPlaying ? "fas fa-pause" : "fas fa-play";
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        document.getElementById("current-time").textContent = formatTime(audio.currentTime);
+        document.getElementById("duration").textContent = formatTime(audio.duration);
+        document.getElementById("progress-bar").value = (audio.currentTime / audio.duration) * 100;
+      });
+
+      document.getElementById("progress-bar").addEventListener("input", (event) => {
+        audio.currentTime = (event.target.value / 100) * audio.duration;
+      });
+    } else {
+      document.querySelector(".podcast-container").innerHTML = `<p>Podcast tidak ditemukan.</p>`;
+    }
+  })
+  .catch((error) => console.error("Error fetching podcast data:", error));
+
+// Fungsi untuk mengganti podcast
+function changePodcast(direction) {
+  if (!podcastData.length) return; // Pastikan data sudah dimuat
+
+  const newIndex = parseInt(podcastIndex) + direction;
+  if (newIndex >= 0 && newIndex < podcastData.length) {
+    window.location.href = `playerpod.html?podcast=${newIndex}`;
+  }
+}
+
+document.getElementById("prev-button").addEventListener("click", () => changePodcast(-1));
+document.getElementById("next-button").addEventListener("click", () => changePodcast(1));
+
+
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function formatTime(seconds) {
+        if (isNaN(seconds)) return "00:00";
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+      }
+
+    </script>
+  </body>
+</html>

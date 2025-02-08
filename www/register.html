@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="./css/register.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="register-container">
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z" fill="#1DA1F2" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form register -->
+    <main class="register-form">
+      <div class="logo-container">
+        <img src="./img/logo.png" alt="Logo Suara Surabaya" class="logo-image">
+      </div>
+      <p style="color: #EEEFF7; font-family: Poppins; font-size: 16px; font-weight: 600; line-height: 120%; text-transform: capitalize; display: flex; justify-content: left; margin-bottom: 30px;">
+        Masukan Data Diri Anda
+      </p>
+      <form>
+        <div class="form-group">
+          <label for="email">Nama Lengkap</label>
+          <input type="email" id="email" placeholder="Masukkan Nama Lengkap" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Masukkan Email" required>
+        </div>
+        <div class="form-group">
+          <label for="Telepon">Nomer Telepon</label>
+          <input type="Telepon" id="Telepon" placeholder="Masukkan Nomer Telepon" required>
+
+        </div>
+        <div class="form-group">
+          <label for="Alamat">Alamat</label>
+          <input type="Alamat" id="Alamat" placeholder="Masukkan Alamat (opsional)" required>
+
+        </div>
+        <div class="form-group password-group">
+          <label for="password">Kata Sandi</label>
+          <input type="password" id="password" name="password" placeholder="Masukkan kata sandi">
+          <button type="button" class="toggle-password">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24.725" height="22" fill="none">
+              <path d="M4.03282 12.8237C4.90534 9.09561 8.55275 6.44669 12.6556 6.44669C16.7572 6.44669 20.4046 9.09561 21.2784 12.8237C21.313 12.9716 21.4122 13.1013 21.5543 13.1841C21.6963 13.2669 21.8695 13.2962 22.0358 13.2654C22.202 13.2346 22.3477 13.1463 22.4408 13.0199C22.5339 12.8935 22.5668 12.7394 22.5322 12.5915C21.5381 8.35114 17.3802 5.30835 12.6556 5.30835C7.93099 5.30835 3.77312 8.35114 2.77907 12.5915C2.74446 12.7394 2.77731 12.8935 2.8704 13.0199C2.96349 13.1463 3.10919 13.2346 3.27545 13.2654C3.44171 13.2962 3.61491 13.2669 3.75694 13.1841C3.89898 13.1013 3.99821 12.9716 4.03282 12.8237ZM12.6428 8.72338C13.8304 8.72338 14.9693 9.14314 15.809 9.89032C16.6488 10.6375 17.1205 11.6509 17.1205 12.7076C17.1205 13.7642 16.6488 14.7776 15.809 15.5248C14.9693 16.272 13.8304 16.6918 12.6428 16.6918C11.4553 16.6918 10.3163 16.272 9.4766 15.5248C8.63687 14.7776 8.16511 13.7642 8.16511 12.7076C8.16511 11.6509 8.63687 10.6375 9.4766 9.89032C10.3163 9.14314 11.4553 8.72338 12.6428 8.72338Z" fill="#6A707C"/>
+            </svg>
+          </button>
+        </div>
+        <a href="./KodeMasuk.html" style="text-decoration: none;">
+        <button type="button" class="btn-primary">Daftar</button></a>
+      </form>
+  </div>
+
+<!-- Loading Overlay -->
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loading-spinner-container">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Mengirim</p>
+  </div>
+</div>
+
+
+
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+  
+      const togglePassword = document.querySelector('.toggle-password');
+      const passwordField = document.querySelector('#password');
+  
+      togglePassword.addEventListener('click', function () {
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+      });
+  
+      const btnMasuk = document.querySelector('.btn-primary'); // Tombol Masuk
+      const loadingOverlay = document.getElementById('loading-overlay'); // Overlay loading
+  
+      btnMasuk.addEventListener('click', (e) => {
+        e.preventDefault(); // Mencegah form melakukan submit langsung
+        loadingOverlay.style.display = 'flex'; // Tampilkan loading
+  
+        // Simulasikan waktu loading, misalnya 2 detik
+        setTimeout(() => {
+          window.location.href = './KodeMasuk.html'; // Arahkan ke halaman berikutnya
+        }, 2000); // Waktu loading 2 detik
+      });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Player</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./css/playerA.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+            fill="#1DA1F2"
+          />
+        </svg>
+      </button>
+    </div>
+  <div class="player-container">
+    </div>
+    <div class="player-logo">
+      <img src="./img2/suara surabaya.png" alt="Audio Logo" />
+    </div>
+    <h3 class="title" id="title" style="margin-top: 30px;text-align: center;"></h3>
+    <div class="player-controls">
+      <input type="range" id="progress" min="0" max="100" value="0" />
+      <div class="duration">
+        <span class="time" id="currentTime">01:12</span>
+        <span class="time" id="totalTime">34:00</span>
+      </div>
+      <div class="controls">
+        <button class="control-button"><i class="fas fa-backward"></i></button>
+        <button class="control-button play"><i class="fas fa-play"></i></button>
+        <button class="control-button"><i class="fas fa-forward"></i></button>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <script>
+    fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+    // Atur judul dari parameter URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get("title");
+    document.getElementById("title").textContent = title || "Audio Player";
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

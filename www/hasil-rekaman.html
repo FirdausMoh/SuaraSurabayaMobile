@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hasil Rekaman</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/recordings.css" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+            fill="#1DA1F2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="profile-container">
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+      <button
+        class="tab-button active"
+        id="audioTab"
+        onclick="switchTab('audio')"
+      >
+        Audio
+      </button>
+      <button class="tab-button" id="videoTab" onclick="switchTab('video')">
+        Video
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="content-container">
+      <!-- Audio Tab Content -->
+      <div class="tab-content" id="audioContent">
+        <div class="file-item">
+          <img src="./img2/suara surabaya.png" alt="Audio Icon" class="file-icon" />
+          <div class="file-info">
+            <p class="file-name">SS-09-01-2025</p>
+            <p class="file-size">40.0 mb</p>
+          </div>
+          <div class="file-actions">
+            <button class="play-button" onclick="navigateToPlayer('audio', 'SS-09-01-2025')">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="delete-button" onclick="deleteFile('audio')" style="color: #777676;">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Tab Content -->
+      <div class="tab-content" id="videoContent" style="display: none">
+        <div class="file-item">
+          <img src="./img2/suara surabaya.png" alt="Video Icon" class="file-icon" />
+          <div class="file-info">
+            <p class="file-name">SS-Video-09-01-2025</p>
+            <p class="file-size">100.0 mb</p>
+          </div>
+          <div class="file-actions">
+            <button class="play-button" onclick="navigateToPlayer('video', 'SS-09-01-2025')">
+                <i class="fas fa-play"></i>
+              </button>
+            <button class="delete-button" onclick="deleteFile('video')" style="color: #777676;">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function switchTab(tab) {
+        const audioContent = document.getElementById("audioContent");
+        const videoContent = document.getElementById("videoContent");
+        const audioTab = document.getElementById("audioTab");
+        const videoTab = document.getElementById("videoTab");
+
+        if (tab === "audio") {
+          audioContent.style.display = "block";
+          videoContent.style.display = "none";
+          audioTab.classList.add("active");
+          videoTab.classList.remove("active");
+        } else if (tab === "video") {
+          audioContent.style.display = "none";
+          videoContent.style.display = "block";
+          audioTab.classList.remove("active");
+          videoTab.classList.add("active");
+        }
+      }
+
+      function deleteFile(tab) {
+        const content = document.getElementById(`${tab}Content`);
+        content.innerHTML = '<p class="no-file">No File Found</p>';
+      }
+      function navigateToPlayer(type, title) {
+    const url =
+      type === "audio"
+        ? `player-audio.html?title=${encodeURIComponent(title)}`
+        : `player-video.html?title=${encodeURIComponent(title)}`;
+    window.location.href = url;
+  }
+    </script>
+  </body>
+</html>

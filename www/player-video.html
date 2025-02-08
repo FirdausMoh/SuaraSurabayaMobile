@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Player</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./css/player.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+  <!-- Tombol Back -->
+  <div class="back-button-container">
+    <button class="back-button" onclick="goBack()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z"
+          fill="#1DA1F2"
+        />
+      </svg>
+    </button>
+  </div>
+      
+    </div>
+    <div class="video-player">
+      <video controls id="video">
+        <source src="./img/image 6.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <h3 class="title" id="title"></h3>
+
+  <script>
+    fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+    // Atur judul dari parameter URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get("title");
+    document.getElementById("title").textContent = title || "Video Player";
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

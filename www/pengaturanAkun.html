@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/profile.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <button class="back-button" onclick="goBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z" fill="#1DA1F2" />
+            </svg>
+        </button>
+        
+    </div>
+    <div class="profile-container">
+        <!-- Profile Section -->
+        <div class="profile-details">
+            <img src="./img/profile.webp" alt="Profile Image" class="profile-image">
+            <h2 class="profile-name">Fahri</h2>
+            <p class="profile-location">Sidoarjo</p>
+            <p class="profile-contact">fahri@gmail.com &nbsp; | &nbsp; +62 088825358</p>
+        </div>
+
+        <!-- Activity Section -->
+        <div class="activity-section">
+            <h3 class="activity-title">Aktivitas</h3>
+            <div class="activity-details">
+                <div class="activity-item">
+                    <a href="kontribusiku.html">
+                    <i> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 17H17M11.5 2.93939L15 5.84848M2.5 11.6667L12.3595 1.77206C13.4211 0.742648 15.1422 0.742645 16.2038 1.77206C17.2654 2.80147 17.2654 4.47049 16.2038 5.4999L6 15.0606L1 16.5152L2.5 11.6667Z" stroke="#1DA1F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></i>
+                    <p>Kontribusi</p>
+                    <span>1</span>
+                    </a>
+                </div>
+                <div class="activity-item">
+                    <i><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                        <path d="M12.5307 8.51147H12.5379M9.32988 8.51147H9.33707M6.1291 8.51147H6.13629M6.5335 14.8923H6.1335C2.9335 14.8923 1.3335 14.0947 1.3335 10.1067V6.11865C1.3335 2.92822 2.9335 1.33301 6.1335 1.33301H12.5335C15.7335 1.33301 17.3335 2.92822 17.3335 6.11865V10.1067C17.3335 13.2971 15.7335 14.8923 12.5335 14.8923H12.1335C11.8855 14.8923 11.6455 15.012 11.4935 15.2114L10.2935 16.8066C9.7655 17.5085 8.9015 17.5085 8.3735 16.8066L7.1735 15.2114C7.0455 15.0359 6.7495 14.8923 6.5335 14.8923Z" stroke="#1DA1F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></i>
+                    <p>Komentar</p>
+                    <span>12</span>
+                </div>
+                <div class="activity-item">
+                    <i><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                        <path d="M8.4062 17.2523L8.94398 16.7295L8.91074 16.6953L8.87343 16.6656L8.4062 17.2523ZM15.4752 15.969L14.7608 15.7407L14.7527 15.7661L14.7464 15.7919L15.4752 15.969ZM17.4712 9.72371L16.7627 9.47773L16.7596 9.48653L16.7568 9.49539L17.4712 9.72371ZM11.7328 6.47273L10.9912 6.36009L10.9899 6.36956L11.7328 6.47273ZM12.1486 3.73505L11.4155 3.57669L11.4106 3.59943L11.4071 3.62243L12.1486 3.73505ZM11.0675 1.8529L10.7975 2.55264L10.8108 2.55775L10.8242 2.56235L11.0675 1.8529ZM9.23785 2.45177L9.86571 2.862L9.86723 2.85965L9.23785 2.45177ZM5.36084 15.7857L7.93896 17.839L8.87343 16.6656L6.29532 14.6124L5.36084 15.7857ZM7.86842 17.7751C8.16719 18.0824 8.58311 18.2571 8.9224 18.3569C9.27924 18.4617 9.66227 18.5156 9.98633 18.5156V17.0156C9.8114 17.0156 9.57069 16.984 9.34538 16.9177C9.10251 16.8463 8.97786 16.7644 8.94398 16.7295L7.86842 17.7751ZM9.98633 18.5156H13.1466V17.0156H9.98633V18.5156ZM13.1466 18.5156C13.831 18.5156 14.5058 18.2556 15.0426 17.8515C15.5808 17.4464 16.031 16.8578 16.204 16.1461L14.7464 15.7919C14.6699 16.1069 14.4548 16.4166 14.1406 16.6531C13.825 16.8906 13.4602 17.0156 13.1466 17.0156V18.5156ZM16.1896 16.1973L18.1856 9.95203L16.7568 9.49539L14.7608 15.7407L16.1896 16.1973ZM18.1797 9.96969C18.4575 9.16953 18.3644 8.35362 17.9146 7.72565C17.4658 7.09911 16.7262 6.74935 15.891 6.74935V8.24935C16.3034 8.24935 16.5617 8.41291 16.6951 8.59912C16.8275 8.7839 16.9007 9.08016 16.7627 9.47773L18.1797 9.96969ZM15.891 6.74935H12.5644V8.24935H15.891V6.74935ZM12.5644 6.74935C12.5328 6.74935 12.5124 6.73722 12.4996 6.72233C12.4928 6.71444 12.4849 6.70203 12.4793 6.68207C12.4737 6.66242 12.4684 6.62816 12.4757 6.57589L10.9899 6.36956C10.8457 7.40808 11.5989 8.24935 12.5644 8.24935V6.74935ZM12.4743 6.58535L12.8901 3.84768L11.4071 3.62243L10.9913 6.3601L12.4743 6.58535ZM12.8817 3.89342C13.131 2.73933 12.4066 1.51923 11.3107 1.14345L10.8242 2.56235C11.2253 2.69989 11.4989 3.19084 11.4155 3.57669L12.8817 3.89342ZM11.3374 1.15317C10.803 0.947028 10.2403 0.992971 9.77787 1.15651C9.31994 1.31844 8.88102 1.62331 8.60846 2.04389L9.86723 2.85965C9.92733 2.76692 10.0706 2.64403 10.278 2.57069C10.4808 2.49896 10.6666 2.50212 10.7975 2.55264L11.3374 1.15317ZM8.60998 2.04154L5.20022 7.26023L6.45595 8.08069L9.86571 2.862L8.60998 2.04154ZM2.33667 15.1991V6.81494H0.83667V15.1991H2.33667ZM2.33667 6.81494C2.33667 6.29559 2.44874 6.14382 2.49814 6.09691C2.55668 6.04132 2.72917 5.93944 3.24997 5.93944V4.43944C2.60646 4.43944 1.9473 4.55144 1.46526 5.00917C0.974099 5.47557 0.83667 6.13655 0.83667 6.81494H2.33667ZM3.24997 5.93944H4.08162V4.43944H3.24997V5.93944ZM4.08162 5.93944C4.60242 5.93944 4.77491 6.04132 4.83344 6.09691C4.88285 6.14382 4.99492 6.29559 4.99492 6.81494H6.49492C6.49492 6.13655 6.35749 5.47557 5.86632 5.00917C5.38429 4.55144 4.72513 4.43944 4.08162 4.43944V5.93944ZM4.99492 6.81494V15.1991H6.49492V6.81494H4.99492ZM4.99492 15.1991C4.99492 15.7184 4.88285 15.8702 4.83344 15.9171C4.77491 15.9727 4.60242 16.0746 4.08162 16.0746V17.5746C4.72513 17.5746 5.38429 17.4625 5.86632 17.0048C6.35749 16.5384 6.49492 15.8774 6.49492 15.1991H4.99492ZM4.08162 16.0746H3.24997V17.5746H4.08162V16.0746ZM3.24997 16.0746C2.72917 16.0746 2.55668 15.9727 2.49814 15.9171C2.44874 15.8702 2.33667 15.7184 2.33667 15.1991H0.83667C0.83667 15.8774 0.974099 16.5384 1.46526 17.0048C1.9473 17.4625 2.60646 17.5746 3.24997 17.5746V16.0746Z" fill="#1DA1F2"/>
+                      </svg></i>
+                    <p>Suka</p>
+                    <span>12</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="links-section">
+            <a href="hasil-rekaman.html" class="profile-link">
+                Hasil Rekaman
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="ubah-profile.html" class="profile-link">
+                Ubah Profile
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="ubah-kata-sandi.html" class="profile-link">
+                Ubah Kata Sandi
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = 'index.html';
+        }
+    }
+    // Memuat file header.html ke dalam container dengan id "header-container"
+    fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+</script>
+</html>

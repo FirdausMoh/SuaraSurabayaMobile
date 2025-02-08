@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Suara Surabaya</title>
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/detailKontributor.css">
+    <style>
+      .popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #252836; /* Matching background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Adjusted for a subtle shadow */
+  z-index: 9999;
+  width: 300px; /* Adjusted width for better proportions */
+  text-align: center; /* Center the text */
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.popup h4 {
+  font-size: 18px;
+  color: #ffffff; /* Text color for the header */
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around; /* Evenly spaced buttons */
+  gap: 15px; /* Space between buttons */
+}
+
+.popup-buttons button {
+  background-color: #252836;
+  color: #ffffff;
+  padding: 10px 20px; /* Proportional button size */
+  border: none;
+  border-radius: 5px; /* Rounded corners for buttons */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-buttons button:hover {
+  background-color: #444; /* Button hover effect */
+}
+
+      .data-not-found {
+        text-align: center;
+        font-size: 18px;
+        color: #c5c5c5;
+        padding: 20px;
+      }
+    </style>
+  </head>
+<body>
+    <div id="header-container"></div>
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+        <button class="back-button" onclick="goBack()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z" fill="#1DA1F2" />
+          </svg>
+        </button>
+      </div>
+
+  <!-- Detail Container -->
+  <div class="content">
+    <div class="feed-container" id="feed-container">
+        <!-- Feed Card 1 -->
+            <div class="feed-card" id="feed-card-1" style="border-bottom: 2px solid #1F1D2B;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0,0.25)">
+                <div class="feed-header" style="margin-bottom: 32px;">
+                  <img src="./img/miftah.jpg" alt="Author Image">
+                  <div>
+                    <p class="author">Fahri</p>
+                    <p class="time">14 Jam Lalu</p>
+                  </div>
+                  <i class="fas fa-ellipsis-v" onclick="showPopup('feed-card-1')"></i>
+                </div>
+                
+                  <p>di Meganti mau melaporkan, ada yang bunyikan sound lumayan keras disekitar rumah saya</p>
+              </div>
+        
+  </div>
+  <div class="data-not-found" id="data-not-found" style="display: none;">
+    Data not found.
+  </div>
+
+  <!-- Popup Modal -->
+  <div class="popup-overlay" id="popup-overlay"></div>
+  <div class="popup" id="popup">
+    <h4>Yakin ingin menghapus?</h4>
+    <div class="popup-buttons" style="background-color: #252836 ;">
+      <button onclick="deleteFeed()">Yakin</button>
+      <button onclick="closePopup()">Batalkan</button>
+    </div>
+  </div>
+
+  <script>
+    function showPopup(feedId) {
+      // Menampilkan popup dan overlay
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('popup-overlay').style.display = 'block';
+      window.currentFeedId = feedId; // Menyimpan id feed yang ingin dihapus
+    }
+    
+    function closePopup() {
+      // Menutup popup dan overlay
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('popup-overlay').style.display = 'none';
+    }
+    
+    function deleteFeed() {
+      // Menghapus feed card
+      const feedCard = document.getElementById(window.currentFeedId);
+      feedCard.remove();
+
+      // Memeriksa apakah masih ada feed card
+      const feedContainer = document.getElementById('feed-container');
+      if (feedContainer.children.length === 0) {
+        document.getElementById('data-not-found').style.display = 'block'; // Menampilkan pesan Data not found
+      }
+
+      closePopup(); // Menutup popup setelah dihapus
+    }
+    
+    fetch("header.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.getElementById("header-container").innerHTML = data;
+      })
+      .catch((error) => console.error("Error loading header:", error));
+
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>

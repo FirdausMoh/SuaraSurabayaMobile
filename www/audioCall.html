@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Call</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/audio.css">
+  </head>
+  <body>
+    <div class="back-button" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+        <path d="M17.77 3.77L16 2 6 12l10 10 1.77-1.77L9.54 12 17.77 3.77z" fill="#1DA1F2" />
+      </svg>
+    </div>
+    <img src="./img2/suara surabaya.png" alt="Logo" class="logo" />
+    <h2>Suara Surabaya</h2>
+    <p class="status" id="callStatus">Menghubungkan...</p>
+    <p class="call-timer" id="callTimer" style="display: none;">00:00</p>
+
+    <div class="controls" id="callControls">
+      <button class="mic-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 25" fill="none">
+          <g clip-path="url(#clip0_651_7149)">
+            <path d="M12 17C14.4853 17 16.5 14.9853 16.5 12.5V5C16.5 2.51469 14.4853 0.5 12 0.5C9.51469 0.5 7.5 2.51469 7.5 5V12.5C7.5 14.9853 9.51469 17 12 17ZM19.5 9.5H18.75C18.3356 9.5 18 9.83562 18 10.25V12.5C18 16.0063 14.977 18.8197 11.4005 18.4709C8.28328 18.1667 6 15.3645 6 12.2328V10.25C6 9.83562 5.66438 9.5 5.25 9.5H4.5C4.08562 9.5 3.75 9.83562 3.75 10.25V12.1325C3.75 16.3344 6.74859 20.0802 10.875 20.6492V22.25H8.25C7.83563 22.25 7.5 22.5856 7.5 23V23.75C7.5 24.1644 7.83563 24.5 8.25 24.5H15.75C16.1644 24.5 16.5 24.1644 16.5 23.75V23C16.5 22.5856 16.1644 22.25 15.75 22.25H13.125V20.667C17.1427 20.1158 20.25 16.6672 20.25 12.5V10.25C20.25 9.83562 19.9144 9.5 19.5 9.5Z" fill="#EEEFF7"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_651_7149">
+              <rect width="24" height="24" fill="white" transform="translate(0 0.5)"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+      <button class="end-call-button" onclick="endCall()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+          <path d="M10.0564 14.3029L8.1964 12.0304C7.9414 11.7192 7.5139 11.6142 7.1464 11.7717L2.9464 13.5717C2.54515 13.7442 2.32765 14.1754 2.42515 14.6029L3.32515 18.5029C3.4189 18.9079 3.7789 19.2004 4.20265 19.2004C7.9789 19.2004 11.4664 17.9854 14.3164 15.9417L11.3164 13.6242C10.9076 13.8679 10.4876 14.1004 10.0564 14.3029ZM23.7664 17.1792L17.8151 12.5817C20.1701 9.61541 21.5989 5.88416 21.5989 1.80041C21.5989 1.38041 21.3101 1.01666 20.9014 0.922906L17.0014 0.0229055C16.5776 -0.0745945 16.1426 0.146655 15.9701 0.544156L14.1701 4.74416C14.0126 5.11166 14.1176 5.54291 14.4289 5.79416L16.7014 7.65416C16.2439 8.63291 15.6551 9.54041 14.9764 10.3842L1.70515 0.127906C1.44265 -0.0745945 1.06765 -0.0295945 0.861396 0.232906L0.126396 1.17791C-0.0761043 1.44041 -0.0311043 1.81541 0.231396 2.01791L22.2964 19.0692C22.5589 19.2717 22.9339 19.2267 23.1401 18.9642L23.8751 18.0154C24.0776 17.7604 24.0289 17.3817 23.7664 17.1792Z" fill="#EEEFF7"/>
+        </svg>
+      </button>
+      <button class="speaker-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+          <path d="M11.4188 3.62946C12.0806 3.1567 13 3.62982 13 4.44319V20.5568C13 21.3702 12.0806 21.8433 11.4188 21.3705L6 17.5H3C1.89543 17.5 1 16.6046 1 15.5V9.5C1 8.39543 1.89543 7.5 3 7.5H6L11.4188 3.62946Z" fill="white"/>
+          <path d="M15.9937 17.4053C17.2345 16.1422 17.9999 14.4105 17.9999 12.5C17.9999 10.5814 17.2281 8.84317 15.978 7.57874" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18.7783 4.7218C20.7689 6.71241 22.0001 9.46241 22.0001 12.5C22.0001 15.5375 20.7689 18.2875 18.7783 20.2782" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+
+    <script>
+      let timerInterval;
+      let seconds = 0;
+      let minutes = 0;
+
+      // Simulasi perubahan status dari "Menghubungkan..." ke "Terhubung" setelah 3 detik
+      setTimeout(() => {
+        document.getElementById("callStatus").textContent = "Terhubung";
+        document.getElementById("callTimer").style.display = "block";
+
+        // Memulai timer panggilan
+        timerInterval = setInterval(() => {
+          seconds++;
+          if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+          }
+          const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+          document.getElementById("callTimer").textContent = formattedTime;
+        }, 1000);
+      }, 3000);
+
+      // Fungsi untuk mengakhiri panggilan
+      function endCall() {
+        clearInterval(timerInterval);
+        document.getElementById("callStatus").textContent = `Panggilan Berakhir (${document.getElementById(
+          "callTimer"
+        ).textContent})`;
+        document.getElementById("callTimer").style.display = "none";
+        document.getElementById("callControls").style.display = "none";
+      }
+
+      // Fungsi untuk kembali ke halaman sebelumnya
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

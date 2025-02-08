@@ -1,0 +1,354 @@
+* {
+  font-family: poppins;
+}
+a{
+  text-decoration: none;
+  color: #F5F5F5;
+  font-family: poppins;
+}
+
+body {
+  background-color: #1F1D2B;
+  color: #f5f5f5;
+  justify-content: center;
+  margin-top: 64px;
+  height: 100vh;
+  margin: 0;
+  padding-top: 120px;
+  
+}
+
+p {
+  color: #EEEFF7;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.textbox-container {
+  position: fixed; 
+  top: 56px; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #1F1D2B;
+  padding: 10px 15px;
+  cursor: pointer;
+  gap: 16px;
+  border-bottom: 1px solid #B6E9FF;
+}
+
+.textbox-container img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.textbox-container span {
+  flex-grow: 1;
+  color: #aaa;
+  width: 100%;
+  height: 36px;
+  background-color: #F7F8F9;
+  border-radius: 8px;
+  padding-left: 16px;
+  padding-top: 6px;
+
+  color: var(--Gray, #8391A1);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+  text-transform: capitalize;
+
+}
+
+.textbox-container i {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.feed-card {
+  display: flex;
+  padding: 16px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  border-bottom: 2px solid #1F1D2B;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.feed-card img {
+  width: 100%;
+  height: fit-content;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+/* Styling for the feed card and other elements */
+.feed-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.feed-header i {
+  cursor: pointer;
+}
+
+.feed-header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  /* Membuat gambar berbentuk bulat */
+  object-fit: cover;
+
+}
+
+.feed-header div {
+  /* display: flex; */
+  flex-direction: column;
+  /* Nama di atas waktu */
+  justify-content: center;
+  /* Rata vertikal nama dan waktu */
+}
+
+.feed-header .author {
+  margin: 0;
+  color: #B6E9FF;
+  font-family: "poppins";
+  font-size: var(--Body-Large-Size, 16px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 19.2px */
+  text-transform: capitalize;
+  display: flex;
+width: 181px;
+height: 14.25px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.feed-header .time {
+  font-size: 12px;
+  /* Ukuran font waktu */
+  color: #848484;
+  /* Warna teks waktu */
+  margin: 0;
+  /* Hilangkan margin bawaan */
+}
+
+.feed-header .fas.fa-ellipsis-v {
+  margin-left: auto;
+  /* Menempatkan titik tiga di ujung kanan */
+  cursor: pointer;
+  /* Menambahkan efek kursor pointer */
+}
+
+.feed-actions {
+  display: flex;
+  margin-top: 10px;
+}
+
+.feed-actions .action-item {
+  display: flex;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.feed-actions .suka {
+  margin-right: 32px;
+}
+
+@keyframes slideDown {
+  0% {
+      transform: translateY(-10px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.svg-animate {
+  animation: slideDown 0.3s ease-in-out;
+}
+
+
+.feed-actions .komentar {
+  margin-right: 32px;
+}
+
+.feed-actions .bagikan {
+  justify-content: flex-end; /* Align Bagikan to the right */
+}
+
+.feed-actions i {
+  margin-right: 5px;
+  width: 20px; 
+  height: 20px;
+}
+
+
+.feed-container {
+  padding-bottom: 60px; /* Keep the existing padding */
+}
+
+.report-popup {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background: #252836;
+  color: #EEEFF7;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.report-popup.active {
+  bottom: 0;
+}
+
+.popup-header {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  margin-top: 16px;
+}
+
+.popup-header h4 {
+  color: #EEEFF7;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  /* 24px */
+  letter-spacing: -0.25px;
+  text-transform: capitalize;
+}
+
+.report-options {
+  list-style: none;
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+  align-self: stretch;
+
+}
+
+.report-options li {
+  padding: 10px 0;
+  cursor: pointer;
+  color: #EEEFF7;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.54px;
+  height: 56px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.popupk {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0D0F1C;
+  width: 331px;
+  height: 224px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 202;
+  overflow: visible;
+}
+
+.popupk.active {
+  display: block;
+}
+
+.popupk-header {
+  position: relative;
+  margin-bottom: 40px;
+  /* Ruang untuk ikon di atas */
+}
+
+.check-icon {
+  position: absolute;
+  top: -40px;
+  /* Menempatkan ikon setengah keluar dari kotak */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 140;
+}
+
+.popupk-body .message {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 55px;
+  font-weight: 500;
+  margin-top: 73px;
+}
+
+.popupk-body .close-button {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 144px;
+  height: 38px;
+  color: #EEEFF7;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.popupk-body .close-button:hover {
+  background-color: #0c85d0;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+  filter: blur(5px); /* Efek blur pada overlay */
+  display: none; /* Hidden by default */
+  opacity: 0; /* Mulai dengan opacity 0 */
+  transition: opacity 0.3s ease; /* Efek transisi untuk opacity */
+  z-index: 200; /* Pastikan overlay berada di atas konten lainnya */
+}
+
+

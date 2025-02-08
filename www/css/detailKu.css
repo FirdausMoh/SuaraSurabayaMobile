@@ -1,0 +1,282 @@
+* {
+    font-family: poppins;
+}
+
+body {
+    font-family: 'Poppins';
+    background-color: #1F1D2B;
+    color: #EEEFF7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.feed-actions {
+    display: flex;
+    justify-content: space-between;
+    color: #B1B1B1;
+    padding-top: 8px;
+    padding-bottom: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.back-button-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 74px;
+}
+
+/* Tombol back */
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.feed-card {
+    display: flex;
+    padding: 16px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    gap: 10px;
+}
+
+.feed-card img {
+    width: 100%;
+    height: fit-content;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.feed-header {
+    display: flex;
+    align-items: center;
+    /* Gambar, nama, dan waktu sejajar secara vertikal */
+    gap: 10px;
+    /* Jarak horizontal antara gambar dan kolom teks */
+}
+
+.feed-header img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    /* Membuat gambar berbentuk bulat */
+    object-fit: cover;
+
+}
+
+.feed-header div {
+    display: flex;
+    flex-direction: column;
+    /* Nama di atas waktu */
+    justify-content: center;
+    /* Rata vertikal nama dan waktu */
+}
+
+.feed-header .author {
+    font-weight: bold;
+    font-size: 14px;
+    /* Ukuran font nama */
+    margin: 0;
+    /* Hilangkan margin bawaan */
+}
+
+.feed-header .time {
+    font-size: 12px;
+    /* Ukuran font waktu */
+    color: #848484;
+    /* Warna teks waktu */
+    margin: 0;
+    /* Hilangkan margin bawaan */
+}
+
+.feed-header .fas.fa-ellipsis-v {
+    margin-left: auto;
+    /* Menempatkan titik tiga di ujung kanan */
+    cursor: pointer;
+    /* Menambahkan efek kursor pointer */
+}
+
+.feed-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.feed-actions div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.feed-actions i {
+    margin-right: 5px;
+}
+
+.feed-container {
+    padding-bottom: 60px;
+}
+
+
+.report-popup {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: #252836;
+    color: #EEEFF7;
+    padding: 20px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.report-popup.active {
+    bottom: 0;
+}
+
+.popup-header {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.popup-header h4 {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 24px */
+    letter-spacing: -0.25px;
+    text-transform: capitalize;
+}
+
+.report-options {
+    list-style: none;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+
+}
+
+.report-options li {
+    padding: 10px 0;
+    cursor: pointer;
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.54px;
+}
+
+/* komentar Section */
+.Komentar {
+    padding-bottom: 20px;
+    background-color: #252836;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.header-komentar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom: 1px solid #B6E9FF;
+    margin-bottom: 15px;
+}
+
+.Komentar h3 {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 19.2px */
+    letter-spacing: -0.25px;
+    text-transform: capitalize;
+    padding: 16px;
+}
+
+/* Chat Messages Styling */
+.message {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.message img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.message-content strong {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.message-content p {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.chat-messages {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.message {
+    font-size: 14px;
+    margin-bottom: 10px;
+}

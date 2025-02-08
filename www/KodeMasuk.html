@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kode Masuk</title>
+  <link rel="stylesheet" href="./css/kode.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="login-container">
+    <!-- Tombol Back -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M17.77 3.77L16 2L6 12L16 22L17.77 20.23L9.54 12L17.77 3.77Z" fill="#1DA1F2" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form Login -->
+    <main class="kode-form">
+      <div class="logo-container">
+        <img src="./img/logo.png" alt="Logo Suara Surabaya" class="logo-image">
+      </div>
+      <p style="color: #EEEFF7; font-family: Poppins; font-size: 16px; font-weight: 600; line-height: 120%; text-transform: capitalize; display: flex; justify-content: left; margin-bottom: 30px;">
+        Masukan Kode Masuk Aktivasi
+      </p>
+      <form>
+        <div class="form-group">
+          <input type="text" id="kode1" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="kode2" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="kode3" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="kode4" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="kode5" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="kode6" required>
+        </div>
+        <a href="./index.html" style="text-decoration: none;"><button type="button" class="btn-primary">Kirim</button></a>
+      </form>      
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!-- Header -->
+<div class="header">
+    <img src="img/logo.png" alt="Suara Surabaya" class="logo">
+    <div class="header-right">
+      <a href="pencarian.html">
+        <i class="fas fa-search"></i>
+      </a>
+        <a href="notifikasi.html">
+          <i class="fas fa-bell notification-icon"></i>
+        </a>
+        
+        <div class="profile-containerH">
+            <a href="pengaturanAkun.html">
+              <img src="img/profile.webp" alt="Profile" class="header-profile-img" />
+            </a>
+          </div>          
+    </div>
+</div>
+<style>
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #212436;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0px 0px 16px 16px;
+}
+
+.logo {
+    height: 36px;
+    object-fit: contain;
+    width: 170px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+}
+
+.header-right i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    margin-top: 6px;
+}
+
+.profile-containerH a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profile-containerH img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: none; /* Pastikan tidak ada border tambahan */
+  box-shadow: none; /* Hilangkan bayangan tambahan */
+}
+
+
+.header-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+</style>

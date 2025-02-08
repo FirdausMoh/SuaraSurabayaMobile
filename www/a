@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Kontributor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/kont.css">
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="Navbar-container"></div>
+    <div class="textbox-container" onclick="window.location.href='form_kontributor.html'">
+        <img src="./img/profile.webp" alt="User Profile">
+        <span>Apa Yang Ingin Anda Bagikan ?</span>
+        <i><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M28.5 10.5V14.985C28.5 14.985 25.515 15 25.5 14.985V10.5H21C21 10.5 21.015 7.515 21 7.5H25.5V3H28.5V7.5H33V10.5H28.5ZM24 16.5V12H19.5V7.5H7.5C5.85 7.5 4.5 8.85 4.5 10.5V28.5C4.5 30.15 5.85 31.5 7.5 31.5H25.5C27.15 31.5 28.5 30.15 28.5 28.5V16.5H24ZM7.5 28.5L12 22.5L15 27L19.5 21L25.5 28.5H7.5Z" fill="#DADADA"/>
+          </svg>
+        </i>
+    </div>
+
+    <div id="feed-container"></div>
+    <div></div> <!-- Elemen spacer -->
+    <div class="report-popup" id="report-popup">
+      <div class="popup-header">
+          <h4>Laporkan</h4>
+      </div>
+
+
+      <ul class="report-options">
+          <li onclick="showReportSuccess()">Konten kekerasan atau kebencian</li>
+          <li onclick="showReportSuccess()">Konten seksual tidak pantas</li>
+          <li onclick="showReportSuccess()">Pelanggaran privasi</li>
+          <li onclick="showReportSuccess()">Penipuan dan aktivitas berbahaya</li>
+          <li onclick="showReportSuccess()">Spam dan manipulasi</li>
+          <li onclick="showReportSuccess()">Aktivitas ilegal</li>
+      </ul>
+  </div>
+  
+  <div class="report-success-popup" id="report-success-popup">
+      <div class="success-icon">✔️</div>
+      <p>Postingan telah dilaporkan</p>
+      <div class="action-buttons">
+          <button onclick="closeSuccessPopup()">Batalkan</button>
+          <button onclick="closeSuccessPopup()">Kembali</button>
+      </div>
+  </div>
+    <script>
+      // Memuat file header.html ke dalam container dengan id "header-container"
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Memuat file Navbar.html setelah halaman dimuat
+        fetch("Navbar3.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("Navbar-container").innerHTML = data;
+            initializeNavbar();
+          })
+          .catch((error) => console.error("Error loading Navbar:", error));
+      });
+
+      // Menjalankan fungsi navbar setelah dimuat
+      function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+      }
+
+        function toggleReportPopup() {
+    const popup = document.getElementById('report-popup');
+    popup.classList.toggle('active');
+}
+
+function showReportSuccess() {
+    const popup = document.getElementById('report-popup');
+    const successPopup = document.getElementById('report-success-popup');
+    popup.classList.remove('active');
+    successPopup.classList.add('active');
+}
+
+function closeSuccessPopup() {
+    const successPopup = document.getElementById('report-success-popup');
+    successPopup.classList.remove('active');
+}
+function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+        const popup = document.getElementById("callPopup");
+        let navigationUrl = "";
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+
+        // Function to show confirmation popup
+        window.showConfirmation = function (message, url) {
+          const popupMessage = document.getElementById("popupMessage");
+          popupMessage.textContent = `Yakin ingin memulai ${message}?`;
+          navigationUrl = url; // Set navigation URL
+          popup.classList.add("active");
+        };
+
+        // Function to cancel the call
+        window.cancelCall = function () {
+          popup.classList.remove("active");
+        };
+
+        // Function to confirm the call and navigate to the URL
+        window.confirmCall = function () {
+          if (navigationUrl) {
+            window.location.href = navigationUrl;
+          }
+        };
+      }
+      function createFeedCard(post) {
+    return `
+        <div class="feed-card">
+            <div class="feed-header" style="margin-bottom: 32px;">
+                <img src="${post.profile_picture}" alt="Author Image">
+                <div>
+                    <p class="author">${post.author}</p>
+                    <p class="time">${post.time_uploaded}</p>
+                </div>
+                <i class="fas fa-ellipsis-v" onclick="toggleReportPopup()"></i>
+            </div>
+            <p>${post.content_text}</p>
+            ${post.content_image ? `<img src="${post.content_image}" class="content-image">` : ''}
+        </div>
+    `;
+}
+
+// Memuat data JSON dari file eksternal
+function loadFeed() {
+    fetch('kontributor.json')
+        .then(response => response.json())
+        .then(data => {
+            const feedContainer = document.getElementById("feed-container");
+            data.posts.forEach(post => {
+                feedContainer.innerHTML += createFeedCard(post);
+            });
+        })
+        .catch(error => console.error("Error loading JSON data: ", error));
+}
+
+// Panggil fungsi untuk memuat data
+loadFeed();
+    </script>
+</body>
+
+</html>

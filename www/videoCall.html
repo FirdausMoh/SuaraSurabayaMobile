@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Call</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/VIDEOCALL.css">
+  </head>
+  <body>
+    <div class="back-button hidden" id="backButton" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+        <path d="M17.77 3.77L16 2 6 12l10 10 1.77-1.77L9.54 12 17.77 3.77z" fill="#1DA1F2" />
+      </svg>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+      <video id="mainVideo" autoplay muted></video>
+      <div class="small-video">
+        <video id="smallVideo" autoplay muted></video>
+      </div>
+    </div>
+
+    <div class="logo-container hidden" id="logoContainer">
+      <img src="./img2/suara surabaya.png" alt="Logo" style="width: 120px;margin-top: -450px; border-radius: 100%;" />
+    </div>
+
+    <div class="controls"></div>
+    <p class="status" id="callStatus">Menghubungkan...</p>
+    <p class="call-timer" id="callTimer" style="display: none;">00:00</p>
+
+    <div class="controls" id="callControls">
+      <button class="mic-button" onclick="toggleMic()"><i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+          <g clip-path="url(#clip0_659_21609)">
+            <path d="M12 17C14.4853 17 16.5 14.9853 16.5 12.5V5C16.5 2.51469 14.4853 0.5 12 0.5C9.51469 0.5 7.5 2.51469 7.5 5V12.5C7.5 14.9853 9.51469 17 12 17ZM19.5 9.5H18.75C18.3356 9.5 18 9.83562 18 10.25V12.5C18 16.0063 14.977 18.8197 11.4005 18.4709C8.28328 18.1667 6 15.3645 6 12.2328V10.25C6 9.83562 5.66438 9.5 5.25 9.5H4.5C4.08562 9.5 3.75 9.83562 3.75 10.25V12.1325C3.75 16.3344 6.74859 20.0802 10.875 20.6492V22.25H8.25C7.83563 22.25 7.5 22.5856 7.5 23V23.75C7.5 24.1644 7.83563 24.5 8.25 24.5H15.75C16.1644 24.5 16.5 24.1644 16.5 23.75V23C16.5 22.5856 16.1644 22.25 15.75 22.25H13.125V20.667C17.1427 20.1158 20.25 16.6672 20.25 12.5V10.25C20.25 9.83562 19.9144 9.5 19.5 9.5Z" fill="#EEEFF7"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_659_21609">
+              <rect width="24" height="24" fill="white" transform="translate(0 0.5)"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </i></button>
+      <button class="camera-button" onclick="switchCamera()"><I>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <g clip-path="url(#clip0_659_21614)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.21903 2.55709C8.38091 2.34126 8.63495 2.21423 8.90474 2.21423H15.7619C16.0317 2.21423 16.2857 2.34126 16.4476 2.55709L18.7619 5.64281H21.7619C22.4438 5.64281 23.098 5.91373 23.5802 6.39596C24.0625 6.87819 24.3333 7.53224 24.3333 8.21423V20.2142C24.3333 20.8962 24.0625 21.5504 23.5802 22.0326C23.098 22.5148 22.4438 22.7857 21.7619 22.7857H2.90474C2.22275 22.7857 1.5687 22.5148 1.08647 22.0326C0.60423 21.5504 0.333313 20.8962 0.333313 20.2142V8.21423C0.333313 7.53226 0.60423 6.87819 1.08647 6.39596C1.5687 5.91373 2.22275 5.64281 2.90474 5.64281H5.90474L8.21903 2.55709ZM17.8809 13.2618L17.782 13.2481C17.7787 10.514 15.7368 8.14837 12.9534 7.80894C12.0021 7.69292 11.075 7.82801 10.2417 8.1632C9.69276 8.38405 9.42678 9.00812 9.64763 9.5571C9.86846 10.1061 10.4925 10.3721 11.0415 10.1512C11.5476 9.94762 12.1109 9.86492 12.694 9.93603C14.287 10.1303 15.4818 11.4128 15.6246 12.9481L15.3494 12.9098C14.9202 12.8501 14.4973 13.0549 14.2779 13.4286C14.0585 13.8023 14.0858 14.2714 14.3471 14.6171L15.4368 16.0588C15.7936 16.5309 16.4655 16.6243 16.9376 16.2675L18.3793 15.1778C18.725 14.9165 18.8793 14.4727 18.7701 14.0533C18.6611 13.6339 18.31 13.3215 17.8809 13.2618ZM9.13514 10.5329C8.77835 10.0609 8.10642 9.96742 7.63435 10.3242L6.19264 11.4139C5.84694 11.6752 5.69267 12.119 5.80176 12.5384C5.91088 12.9578 6.2619 13.2702 6.6911 13.3299L6.78988 13.3436C6.79394 16.077 8.8356 18.4417 11.6184 18.7811C12.5697 18.8971 13.4969 18.7621 14.3301 18.4268C14.8791 18.2059 15.1451 17.5819 14.9242 17.0329C14.7034 16.484 14.0793 16.218 13.5303 16.4388C13.0242 16.6424 12.4609 16.7251 11.8778 16.654C10.2854 16.4598 9.09088 15.1782 8.94743 13.6436L9.22252 13.6819C9.65174 13.7416 10.0747 13.5368 10.2941 13.1631C10.5135 12.7894 10.4862 12.3203 10.2248 11.9746L9.13514 10.5329Z" fill="#EEEFF7"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_659_21614">
+              <rect width="24" height="24" fill="white" transform="translate(0.333313 0.5)"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </I></button>
+      <button class="speaker-button"><i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <path d="M12.0854 3.62946C12.7473 3.1567 13.6666 3.62982 13.6666 4.44319V20.5568C13.6666 21.3702 12.7473 21.8433 12.0854 21.3705L6.66663 17.5H3.66663C2.56206 17.5 1.66663 16.6046 1.66663 15.5V9.5C1.66663 8.39543 2.56206 7.5 3.66663 7.5H6.66663L12.0854 3.62946Z" fill="white"/>
+          <path d="M16.6604 17.4053C17.9013 16.1422 18.6667 14.4105 18.6667 12.5C18.6667 10.5814 17.8948 8.84317 16.6448 7.57874" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19.4448 4.7218C21.4354 6.71241 22.6666 9.46241 22.6666 12.5C22.6666 15.5375 21.4354 18.2875 19.4448 20.2782" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </i></button>
+      <button class="end-call-button" onclick="endCall()"><i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20" fill="none">
+          <path d="M10.5564 14.3029L8.6964 12.0304C8.4414 11.7192 8.0139 11.6142 7.6464 11.7717L3.4464 13.5717C3.04515 13.7442 2.82765 14.1754 2.92515 14.6029L3.82515 18.5029C3.9189 18.9079 4.2789 19.2004 4.70265 19.2004C8.4789 19.2004 11.9664 17.9854 14.8164 15.9417L11.8164 13.6242C11.4076 13.8679 10.9876 14.1004 10.5564 14.3029ZM24.2664 17.1792L18.3151 12.5817C20.6701 9.61541 22.0989 5.88416 22.0989 1.80041C22.0989 1.38041 21.8101 1.01666 21.4014 0.922906L17.5014 0.0229055C17.0776 -0.0745945 16.6426 0.146655 16.4701 0.544156L14.6701 4.74416C14.5126 5.11166 14.6176 5.54291 14.9289 5.79416L17.2014 7.65416C16.7439 8.63291 16.1551 9.54041 15.4764 10.3842L2.20515 0.127906C1.94265 -0.0745945 1.56765 -0.0295945 1.3614 0.232906L0.626396 1.17791C0.423896 1.44041 0.468896 1.81541 0.731396 2.01791L22.7964 19.0692C23.0589 19.2717 23.4339 19.2267 23.6401 18.9642L24.3751 18.0154C24.5776 17.7604 24.5289 17.3817 24.2664 17.1792Z" fill="#EEEFF7"/>
+        </svg>
+      </i></button>
+    </div>
+
+    <script>
+      let timerInterval;
+      let seconds = 0;
+      let minutes = 0;
+      let isFrontCamera = true;
+
+      // Simulasi perubahan status dari "Menghubungkan..." ke "Terhubung" setelah 3 detik
+      setTimeout(() => {
+        document.getElementById("callStatus").textContent = "Terhubung";
+        document.getElementById("callTimer").style.display = "block";
+
+        // Memulai timer panggilan
+        timerInterval = setInterval(() => {
+          seconds++;
+          if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+          }
+          const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
+            .toString()
+            .padStart(2, "0")}`;
+          document.getElementById("callTimer").textContent = formattedTime;
+        }, 1000);
+      }, 3000);
+
+      // Fungsi untuk mengakhiri panggilan
+      function endCall() {
+        clearInterval(timerInterval);
+        document.getElementById("callStatus").textContent = `Panggilan Berakhir (${document.getElementById(
+          "callTimer"
+        ).textContent})`;
+        document.getElementById("callTimer").style.display = "none";
+        document.getElementById("callControls").style.display = "none";
+        document.getElementById("videoContainer").classList.add("hidden");
+        document.getElementById("logoContainer").classList.remove("hidden");
+        document.getElementById("backButton").classList.remove("hidden");
+      }
+
+      // Fungsi untuk kembali ke halaman sebelumnya
+      function goBack() {
+        window.history.back();
+      }
+
+      // Fungsi untuk mengganti kamera
+      function switchCamera() {
+        isFrontCamera = !isFrontCamera;
+        // Simulasi pergantian kamera
+        alert(isFrontCamera ? "Kamera depan" : "Kamera belakang");
+      }
+
+      // Fungsi untuk toggle microphone
+      function toggleMic() {
+        // Simulasi toggle microphone
+        alert("Microphone toggled");
+      }
+
+      // Simulasi video stream
+      document.getElementById("mainVideo").src = "./video-placeholder";      
+      document.getElementById("smallVideo").src = "./video-placeholder.mp4";
+    </script>
+  </body>
+</html>

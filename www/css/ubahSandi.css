@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+  scrollbar-width: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1F1D2B;
+  color: #fff;
+}
+.back-button-container {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 74px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #1da1f2;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group label {
+  display: block;
+  color: #EEEFF7;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  /* 20px */
+  text-transform: capitalize;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 44px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #EEEFF7;
+  color: #000000;
+  font-size: 14px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1da1f2;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  color: #EEEFF7;
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: capitalize;
+margin-top: 30px;
+}
+
+.submit-button:hover {
+  background-color: #0c85d0;
+}
+
+.loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  flex-direction: column;
+}
+
+.loading-overlay.active {
+  display: flex;
+}
+
+.loading-spinner {
+  border: 8px solid rgba(255, 255, 255, 0.8);
+  /* Lighter border */
+  border-top: 8px solid #1da1f2;
+  /* Blue accent color */
+  border-radius: 50%;
+  width: 80px;
+  /* Spinner width */
+  height: 80px;
+  /* Spinner height */
+  animation: spin 1s linear infinite;
+  /* Smooth rotation */
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #B6E9FF;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0D0F1C;
+  width: 331px;
+  height: 224px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  overflow: visible;
+  /* Agar ikon di luar kotak tetap terlihat */
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup-header {
+  position: relative;
+  margin-bottom: 40px;
+  /* Ruang untuk ikon di atas */
+}
+
+.check-icon {
+  position: absolute;
+  top: -40px;
+  /* Menempatkan ikon setengah keluar dari kotak */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.popup-body .message {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 55px;
+  font-weight: 500;
+  margin-top: 73px;
+}
+
+.popup-body .close-button {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 144px;
+  height: 38px;
+  color: #EEEFF7;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.popup-body .close-button:hover {
+  background-color: #0c85d0;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Warna latar belakang gelap */
+  backdrop-filter: blur(4px);
+  /* Efek blur */
+  z-index: 9998;
+  /* Pastikan berada di bawah popup */
+}
+
+.popup-overlay.active {
+  display: block;
+}

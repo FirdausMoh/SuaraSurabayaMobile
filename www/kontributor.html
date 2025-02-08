@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Kontributor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/kont.css">
+</head>
+
+<body>
+  <div id="header-container"></div>
+  <div id="Navbar-container"></div>
+    <div class="textbox-container" onclick="window.location.href='form_kontributor.html'">
+        <img src="./img/profile.webp" alt="User Profile">
+        <span>Apa Yang Ingin Anda Bagikan ?</span>
+        <i><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M28.5 10.5V14.985C28.5 14.985 25.515 15 25.5 14.985V10.5H21C21 10.5 21.015 7.515 21 7.5H25.5V3H28.5V7.5H33V10.5H28.5ZM24 16.5V12H19.5V7.5H7.5C5.85 7.5 4.5 8.85 4.5 10.5V28.5C4.5 30.15 5.85 31.5 7.5 31.5H25.5C27.15 31.5 28.5 30.15 28.5 28.5V16.5H24ZM7.5 28.5L12 22.5L15 27L19.5 21L25.5 28.5H7.5Z" fill="#DADADA"/>
+          </svg>
+        </i>
+    </div>
+      <div id="feed-container"></div>
+    <div style="padding: 46px;"></div> <!-- Elemen spacer -->
+    <div class="report-popup" id="report-popup">
+      <div class="popup-header" style="box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+          <h4>Laporkan</h4>
+      </div>
+      <ul class="report-options">
+          <li onclick="showReportSuccess()">Konten kekerasan atau kebencian</li>
+          <li onclick="showReportSuccess()">Konten seksual tidak pantas</li>
+          <li onclick="showReportSuccess()">Pelanggaran privasi</li>
+          <li onclick="showReportSuccess()">Penipuan dan aktivitas berbahaya</li>
+          <li onclick="showReportSuccess()">Spam dan manipulasi</li>
+          <li onclick="showReportSuccess()">Aktivitas ilegal</li>
+      </ul>
+  </div>
+  
+  <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popupk" id="successPopup">
+      <div class="popupk-header">
+        <div class="check-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 80 81" fill="none">
+            <circle cx="40" cy="40.5" r="35" fill="#1BA354" style="stroke-width: 3px;
+            stroke: #EEEFF7;"/>
+            <path d="M34 50L26 42L28.5 39.5L34 45L51.5 27.5L54 30L34 50Z" fill="white" />
+        </svg>
+        </div>
+      </div>
+      <div class="popupk-body">
+        <p class="message">Perubahan telah disimpan</p>
+        <button class="close-button" onclick="closePopup()">Kembali</button>
+      </div>
+    </div>
+    <script>
+      // Memuat file header.html ke dalam container dengan id "header-container"
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Memuat file Navbar.html setelah halaman dimuat
+        fetch("Navbar3.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("Navbar-container").innerHTML = data;
+            initializeNavbar();
+          })
+          .catch((error) => console.error("Error loading Navbar:", error));
+      });
+
+      // Menjalankan fungsi navbar setelah dimuat
+      function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+      }
+function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+        const popup = document.getElementById("callPopup");
+        let navigationUrl = "";
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+
+        // Function to show confirmation popup
+        window.showConfirmation = function (message, url) {
+          const popupMessage = document.getElementById("popupMessage");
+          popupMessage.textContent = `Yakin ingin memulai ${message}?`;
+          navigationUrl = url; // Set navigation URL
+          popup.classList.add("active");
+        };
+
+        // Function to cancel the call
+        window.cancelCall = function () {
+          popup.classList.remove("active");
+        };
+
+        // Function to confirm the call and navigate to the URL
+        window.confirmCall = function () {
+          if (navigationUrl) {
+            window.location.href = navigationUrl;
+          }
+        };
+      }
+      function createFeedCard(post) {
+    return `
+    <a href="detailkontributor.html?id=${post.id}" style="text-decoration: none; color:#F5F5F5">
+        <div class="feed-card">
+            <div class="feed-header" style="margin-bottom: 32px;">
+                <img src="${post.profile_picture}" alt="Author Image">
+                <div>
+                    <p class="author">${post.author}</p>
+                    <p class="time">${post.time_uploaded}</p>
+                </div>
+                <i class="fas fa-ellipsis-v" onclick="toggleReportPopup(); return false;"></i>
+            </div>
+            <p class="content">${post.content_text}</p>
+            ${post.content_image ? `<img src="${post.content_image}" class="content-image">` : ''}
+    <a href="javascript:void(0);" onclick="toggleLike(this)">
+    <div class="feed-actions">
+        <!-- Tombol Suka -->
+        <div class="action-item suka">
+            <i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.81576 16.2916L8.34609 15.7612L8.31247 15.7276L8.27489 15.6985L7.81576 16.2916ZM14.8991 15.0416L14.1866 14.8073L14.1781 14.8332L14.1715 14.8597L14.8991 15.0416ZM16.8991 8.95823L16.1928 8.70597L16.1896 8.71494L16.1866 8.72398L16.8991 8.95823ZM11.1491 5.79156L10.408 5.67577L10.4066 5.68549L11.1491 5.79156ZM11.5658 3.12489L10.8336 2.96219L10.8284 2.98551L10.8247 3.00911L11.5658 3.12489ZM10.4824 1.29156L10.2191 1.99381L10.2321 1.99868L10.2453 2.00307L10.4824 1.29156ZM8.64909 1.87489L9.27156 2.29327L9.27313 2.29092L8.64909 1.87489ZM4.77329 14.8846L7.35663 16.8846L8.27489 15.6985L5.69155 13.6985L4.77329 14.8846ZM7.28543 16.8219C7.58544 17.1219 8.00126 17.2912 8.33888 17.3877C8.69486 17.4894 9.07665 17.5416 9.39909 17.5416V16.0416C9.22152 16.0416 8.97832 16.0104 8.75096 15.9454C8.50525 15.8752 8.3794 15.7945 8.34609 15.7612L7.28543 16.8219ZM9.39909 17.5416H12.5658V16.0416H9.39909V17.5416ZM12.5658 17.5416C13.2455 17.5416 13.9186 17.2905 14.4566 16.8968C14.9951 16.5028 15.451 15.9264 15.6267 15.2235L14.1715 14.8597C14.0972 15.1567 13.8864 15.4553 13.5708 15.6863C13.2546 15.9176 12.886 16.0416 12.5658 16.0416V17.5416ZM15.6116 15.2758L17.6116 9.19247L16.1866 8.72398L14.1866 14.8073L15.6116 15.2758ZM17.6054 9.21048C17.8877 8.41989 17.7925 7.61178 17.3362 6.99249C16.8834 6.378 16.1437 6.04156 15.3158 6.04156V7.54156C15.7378 7.54156 15.9981 7.70512 16.1286 7.88229C16.2556 8.05467 16.3271 8.32989 16.1928 8.70597L17.6054 9.21048ZM15.3158 6.04156H11.9824V7.54156H15.3158V6.04156ZM11.9824 6.04156C11.9426 6.04156 11.92 6.02608 11.9094 6.01409C11.904 6.00793 11.8982 5.99906 11.8941 5.98479C11.8901 5.97089 11.885 5.94319 11.8916 5.89762L10.4066 5.68549C10.2569 6.73349 11.0391 7.54156 11.9824 7.54156V6.04156ZM11.8901 5.90734L12.3068 3.24067L10.8247 3.00911L10.4081 5.67578L11.8901 5.90734ZM12.2979 3.28759C12.5539 2.13561 11.8076 0.942701 10.7196 0.580046L10.2453 2.00307C10.6573 2.14042 10.911 2.61417 10.8336 2.96219L12.2979 3.28759ZM10.7458 0.589312C10.2154 0.390427 9.65715 0.434514 9.19695 0.59271C8.74179 0.749172 8.30083 1.0452 8.02505 1.45887L9.27313 2.29092C9.33068 2.20459 9.47306 2.08395 9.68457 2.01124C9.89102 1.94027 10.0828 1.94269 10.2191 1.99381L10.7458 0.589312ZM8.02663 1.45652L4.60996 6.53985L5.85489 7.3766L9.27155 2.29327L8.02663 1.45652ZM1.73242 14.2916V6.12489H0.232422V14.2916H1.73242ZM1.73242 6.12489C1.73242 5.62607 1.84242 5.48795 1.88697 5.44683C1.94625 5.3921 2.12324 5.29156 2.64909 5.29156V3.79156C2.00827 3.79156 1.35192 3.89935 0.869545 4.34462C0.372427 4.8035 0.232422 5.45705 0.232422 6.12489H1.73242ZM2.64909 5.29156H3.48242V3.79156H2.64909V5.29156ZM3.48242 5.29156C4.00827 5.29156 4.18526 5.3921 4.24455 5.44683C4.28909 5.48795 4.39909 5.62607 4.39909 6.12489H5.89909C5.89909 5.45705 5.75908 4.8035 5.26197 4.34462C4.77959 3.89935 4.12324 3.79156 3.48242 3.79156V5.29156ZM4.39909 6.12489V14.2916H5.89909V6.12489H4.39909ZM4.39909 14.2916C4.39909 14.7904 4.28909 14.9285 4.24455 14.9696C4.18526 15.0244 4.00827 15.1249 3.48242 15.1249V16.6249C4.12324 16.6249 4.77959 16.5171 5.26197 16.0718C5.75908 15.613 5.89909 14.9594 5.89909 14.2916H4.39909ZM3.48242 15.1249H2.64909V16.6249H3.48242V15.1249ZM2.64909 15.1249C2.12324 15.1249 1.94625 15.0244 1.88697 14.9696C1.84242 14.9285 1.73242 14.7904 1.73242 14.2916H0.232422C0.232422 14.9594 0.372427 15.613 0.869545 16.0718C1.35192 16.5171 2.00827 16.6249 2.64909 16.6249V15.1249Z" fill="#EEEFF7"/>
+                </svg></i><span class="like-text">Suka</span>  </a>
+        </div>
+        <!-- Tombol Komentar -->
+        <a href="detailkontributor.html?id=${post.id}" style="text-decoration: none; color:#F5F5F5">
+        <div class="action-item komentar">
+            <i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M13.3305 9.16669H13.338M9.99632 9.16669H10.0038M6.66217 9.16669H6.66966M7.08341 15.8334H6.66675C3.33341 15.8334 1.66675 15 1.66675 10.8334V6.66669C1.66675 3.33335 3.33341 1.66669 6.66675 1.66669H13.3334C16.6667 1.66669 18.3334 3.33335 18.3334 6.66669V10.8334C18.3334 14.1667 16.6667 15.8334 13.3334 15.8334H12.9167C12.6584 15.8334 12.4084 15.9584 12.2501 16.1667L11.0001 17.8334C10.4501 18.5667 9.55008 18.5667 9.00008 17.8334L7.75008 16.1667C7.61675 15.9834 7.30841 15.8334 7.08341 15.8334Z" stroke="#EEEFF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </i> Komentar
+        </div>
+        </a>
+        <!-- Tombol Bagikan -->
+        <div style="margin-top:4px">
+  <i>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M17.5002 9.54918L9.50016 4.25L9.50016 7.25C2.5 8.75 2.5 15.75 2.5 15.75C2.5 15.75 5.5 11.75 9.50016 12.25L9.50016 15.35L17.5002 9.54918Z" stroke="#EEEFF7" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </i>
+  <span onclick="shareContent()">Bagikan</span>
+</div>
+
+    </div>
+    
+    `;
+}
+
+// Memuat data JSON dari file eksternal
+function loadFeed() {
+    fetch('kontributor.json')
+        .then(response => response.json())
+        .then(data => {
+            const feedContainer = document.getElementById("feed-container");
+            data.posts.forEach(post => {
+                feedContainer.innerHTML += createFeedCard(post);
+            });
+        })
+        .catch(error => console.error("Error loading JSON data: ", error));
+}
+
+// Panggil fungsi untuk memuat data
+loadFeed();
+
+function toggleReportPopup() {
+    const popup = document.getElementById('report-popup');
+    popup.classList.toggle('active');
+}
+
+function showReportSuccess() {
+    const popup = document.getElementById('report-popup');
+    const successPopup = document.getElementById('successPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    
+    // Menyembunyikan report-popup dan menampilkan successPopup serta overlay
+    popup.classList.remove('active');
+    successPopup.classList.add('active');
+    
+    // Mengubah display menjadi block untuk menampilkan overlay dan menerapkan blur
+    popupOverlay.style.display = 'block';  // Menampilkan overlay
+    setTimeout(() => {
+        popupOverlay.style.opacity = 1; // Mengatur opacity setelah elemen muncul
+    }, 10); // Sedikit delay untuk memastikan elemen muncul dengan halus
+}
+
+function closePopup() {
+    const successPopup = document.getElementById('successPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    
+    // Menyembunyikan successPopup dan overlay dengan mengatur opacity dan display
+    successPopup.classList.remove('active');
+    popupOverlay.style.opacity = 0;
+    
+    // Menyembunyikan overlay setelah efek animasi selesai
+    setTimeout(() => {
+        popupOverlay.style.display = 'none';  // Menyembunyikan overlay setelah selesai
+    }, 300); // Waktu delay untuk menunggu animasi selesai
+}
+
+function toggleLike(button) {
+    const svgContainer = button.querySelector("i");
+    const likeText = button.querySelector(".like-text"); // Get the text element inside the button
+
+    // Add animation class to SVG container
+    svgContainer.classList.add("svg-animate");
+
+    // Check if the SVG path already matches the 'liked' version
+    if (svgContainer.innerHTML.includes('fill="#1DA1F2"')) {
+        // Replace with the unliked version (gray heart)
+        svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.81576 16.2916L8.34609 15.7612L8.31247 15.7276L8.27489 15.6985L7.81576 16.2916ZM14.8991 15.0416L14.1866 14.8073L14.1781 14.8332L14.1715 14.8597L14.8991 15.0416ZM16.8991 8.95823L16.1928 8.70597L16.1896 8.71494L16.1866 8.72398L16.8991 8.95823ZM11.1491 5.79156L10.408 5.67577L10.4066 5.68549L11.1491 5.79156ZM11.5658 3.12489L10.8336 2.96219L10.8284 2.98551L10.8247 3.00911L11.5658 3.12489ZM10.4824 1.29156L10.2191 1.99381L10.2321 1.99868L10.2453 2.00307L10.4824 1.29156ZM8.64909 1.87489L9.27156 2.29327L9.27313 2.29092L8.64909 1.87489ZM4.77329 14.8846L7.35663 16.8846L8.27489 15.6985L5.69155 13.6985L4.77329 14.8846ZM7.28543 16.8219C7.58544 17.1219 8.00126 17.2912 8.33888 17.3877C8.69486 17.4894 9.07665 17.5416 9.39909 17.5416V16.0416C9.22152 16.0416 8.97832 16.0104 8.75096 15.9454C8.50525 15.8752 8.3794 15.7945 8.34609 15.7612L7.28543 16.8219ZM9.39909 17.5416H12.5658V16.0416H9.39909V17.5416ZM12.5658 17.5416C13.2455 17.5416 13.9186 17.2905 14.4566 16.8968C14.9951 16.5028 15.451 15.9264 15.6267 15.2235L14.1715 14.8597C14.0972 15.1567 13.8864 15.4553 13.5708 15.6863C13.2546 15.9176 12.886 16.0416 12.5658 16.0416V17.5416ZM15.6116 15.2758L17.6116 9.19247L16.1866 8.72398L14.1866 14.8073L15.6116 15.2758ZM17.6054 9.21048C17.8877 8.41989 17.7925 7.61178 17.3362 6.99249C16.8834 6.378 16.1437 6.04156 15.3158 6.04156V7.54156C15.7378 7.54156 15.9981 7.70512 16.1286 7.88229C16.2556 8.05467 16.3271 8.32989 16.1928 8.70597L17.6054 9.21048ZM15.3158 6.04156H11.9824V7.54156H15.3158V6.04156ZM11.9824 6.04156C11.9426 6.04156 11.92 6.02608 11.9094 6.01409C11.904 6.00793 11.8982 5.99906 11.8941 5.98479C11.8901 5.97089 11.885 5.94319 11.8916 5.89762L10.4066 5.68549C10.2569 6.73349 11.0391 7.54156 11.9824 7.54156V6.04156ZM11.8901 5.90734L12.3068 3.24067L10.8247 3.00911L10.4081 5.67578L11.8901 5.90734ZM12.2979 3.28759C12.5539 2.13561 11.8076 0.942701 10.7196 0.580046L10.2453 2.00307C10.6573 2.14042 10.911 2.61417 10.8336 2.96219L12.2979 3.28759ZM10.7458 0.589312C10.2154 0.390427 9.65715 0.434514 9.19695 0.59271C8.74179 0.749172 8.30083 1.0452 8.02505 1.45887L9.27313 2.29092C9.33068 2.20459 9.47306 2.08395 9.68457 2.01124C9.89102 1.94027 10.0828 1.94269 10.2191 1.99381L10.7458 0.589312ZM8.02663 1.45652L4.60996 6.53985L5.85489 7.3766L9.27155 2.29327L8.02663 1.45652ZM1.73242 14.2916V6.12489H0.232422V14.2916H1.73242ZM1.73242 6.12489C1.73242 5.62607 1.84242 5.48795 1.88697 5.44683C1.94625 5.3921 2.12324 5.29156 2.64909 5.29156V3.79156C2.00827 3.79156 1.35192 3.89935 0.869545 4.34462C0.372427 4.8035 0.232422 5.45705 0.232422 6.12489H1.73242ZM2.64909 5.29156H3.48242V3.79156H2.64909V5.29156ZM3.48242 5.29156C4.00827 5.29156 4.18526 5.3921 4.24455 5.44683C4.28909 5.48795 4.39909 5.62607 4.39909 6.12489H5.89909C5.89909 5.45705 5.75908 4.8035 5.26197 4.34462C4.77959 3.89935 4.12324 3.79156 3.48242 3.79156V5.29156ZM4.39909 6.12489V14.2916H5.89909V6.12489H4.39909ZM4.39909 14.2916C4.39909 14.7904 4.28909 14.9285 4.24455 14.9696C4.18526 15.0244 4.00827 15.1249 3.48242 15.1249V16.6249C4.12324 16.6249 4.77959 16.5171 5.26197 16.0718C5.75908 15.613 5.89909 14.9594 5.89909 14.2916H4.39909ZM3.48242 15.1249H2.64909V16.6249H3.48242V15.1249ZM2.64909 15.1249C2.12324 15.1249 1.94625 15.0244 1.88697 14.9696C1.84242 14.9285 1.73242 14.7904 1.73242 14.2916H0.232422C0.232422 14.9594 0.372427 15.613 0.869545 16.0718C1.35192 16.5171 2.00827 16.6249 2.64909 16.6249V15.1249Z" fill="#EEEFF7"/>
+            </svg>
+        `;
+
+        // Change the text color back to the default (unliked)
+        likeText.style.color = "#EEEFF7";
+    } else {
+        // Replace with the liked version (blue heart)
+        svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 16" fill="none">
+              <path d="M5.23242 13.2916L7.81576 15.2916C8.14909 15.6249 8.89909 15.7916 9.39909 15.7916H12.5658C13.5658 15.7916 14.6491 15.0416 14.8991 14.0416L16.8991 7.95823C17.3158 6.79156 16.5658 5.79156 15.3158 5.79156H11.9824C11.4824 5.79156 11.0658 5.37489 11.1491 4.79156L11.5658 2.12489C11.7324 1.37489 11.2324 0.541559 10.4824 0.291559C9.81576 0.0415587 8.98242 0.374892 8.64909 0.874892L5.23242 5.95823" fill="#1DA1F2"/>
+              <path d="M0.982422 13.2916V5.12489C0.982422 3.95823 1.48242 3.54156 2.64909 3.54156H3.48242C4.64909 3.54156 5.14909 3.95823 5.14909 5.12489V13.2916C5.14909 14.4582 4.64909 14.8749 3.48242 14.8749H2.64909C1.48242 14.8749 0.982422 14.4582 0.982422 13.2916Z" fill="#1DA1F2"/>
+            </svg>
+        `;
+
+        // Change the text color to blue (liked)
+        likeText.style.color = "#1DA1F2";
+    }
+}
+
+function shareContent() {
+  const title = "Suara Surabaya - Kawan SS";  // Title of the content
+  const url = window.location.href;  // Current URL to share
+
+  event.stopPropagation(); 
+
+  // Check if the Web Share API is supported by the browser
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      url: url,
+    })
+    .then(() => console.log('Sharing was successful!'))
+    .catch((error) => console.log('Sharing failed', error));
+  } else {
+    // Fallback for browsers that do not support Web Share API
+    const shareText = encodeURIComponent(`${title} - ${url}`);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
+    const whatsappUrl = `https://wa.me/?text=${shareText}`;
+
+    // Prompt user with sharing options
+    if (confirm("Bagikan melalui Twitter?")) {
+      window.open(twitterUrl, "_blank");
+    } else if (confirm("Bagikan melalui WhatsApp?")) {
+      window.open(whatsappUrl, "_blank");
+    }
+  }
+}
+
+
+    </script>
+</body>
+
+</html>

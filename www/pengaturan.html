@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/setting.css">
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <div id="Navbar-container"></div>
+    <div class="main-container">
+        <!-- Profil Header -->
+       <a href="./pengaturanAkun.html" style="text-decoration: none;color: #E5E5E5;">
+        <div class="profile-header">
+            <div class="profile-info-wrapper">
+                <img src="./img/profile.webp" alt="User Profile" class="profile-image">
+                <div class="profile-info">
+                    <h3>Fahri</h3>
+                    <p>Pengaturan Akun</p>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+       </a> 
+
+        <!-- Ganti Bahasa -->
+        <div class="settings" style="margin-top: 24px;">
+            <div class="language">
+                <h4 class="section-title">Ganti Bahasa</h4>
+                <label class="radio-container">
+                    Bahasa Indonesia
+                    <input type="radio" name="language" value="indonesia" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-container">
+                    Bahasa Inggris
+                    <input type="radio" name="language" value="english">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Rekaman Siaran -->
+        <div class="settings" style="margin-top: 36px;">
+            <div class="record">
+                <h4 class="section-title">Rekaman Siaran</h4>
+                <label class="radio-container">
+                    <div class="text-container" style="color: var(--Gray, #8C8F99); font-family: Poppins; font-size: 14px; font-style: normal; font-weight: 600; line-height: normal;">
+                        Rekam Siaran video dan audio
+                        <span class="subtitle">Simpan rekaman siaran sebagai video dan audio.</span>
+                    </div>
+                    <input type="radio" name="record" value="video_audio" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-container">
+                    <div class="text-container">
+                        Rekam Siaran hanya audio
+                        <span class="subtitle">Simpan rekaman siaran hanya sebagai audio.</span>
+                    </div>
+                    <input type="radio" name="record" value="audio_only">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="settings-section">
+            <a href="faq.html" class="setting-link">
+                FAQ <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <!-- Keluar -->
+        <div class="settings-section">
+            <a href="login.html" class="setting-link">
+                Keluar <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Flash Message -->
+    <div id="overlay"></div>
+<div id="flash-message" class="flash-message">
+    <h4>Ganti Konfigurasi?</h4>
+    <p>Mulai ulang aplikasi untuk menerapkan konfigurasi baru</p>
+    <div class="flash-buttons">
+        <button class="flash-confirm" onclick="confirmFlashMessage()">Yakin</button>
+        <button class="flash-cancel" onclick="hideFlashMessage()">Batal</button>
+    </div>
+</div>
+  
+</div>
+</body>
+<script>
+    // Memuat file header.html ke dalam container dengan id "header-container"
+    fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Memuat file Navbar.html setelah halaman dimuat
+        fetch("Navbar4.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("Navbar-container").innerHTML = data;
+            initializeNavbar();
+          })
+          .catch((error) => console.error("Error loading Navbar:", error));
+      });
+
+      // Menjalankan fungsi navbar setelah dimuat
+      function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+      }
+      // Menampilkan Flash Message dan overlay
+function showFlashMessage() {
+    const flashMessage = document.getElementById("flash-message");
+    const overlay = document.getElementById("overlay");
+    flashMessage.style.display = "block";
+    overlay.style.display = "block"; // Tampilkan overlay
+}
+
+// Menghilangkan Flash Message dan overlay
+function hideFlashMessage() {
+    const flashMessage = document.getElementById("flash-message");
+    const overlay = document.getElementById("overlay");
+    flashMessage.style.display = "none";
+    overlay.style.display = "none"; // Sembunyikan overlay
+}
+
+// Mengonfirmasi dan Menghilangkan Flash Message dan overlay
+function confirmFlashMessage() {
+    // Lakukan aksi yang diperlukan untuk mengonfirmasi perubahan
+    console.log("Konfigurasi disimpan");
+
+    // Menghilangkan flash message dan overlay
+    hideFlashMessage();
+}
+
+// Event listener untuk radio button
+document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+    radio.addEventListener("change", showFlashMessage); // Tampilkan flash message saat opsi berubah
+});
+function initializeNavbar() {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+        const popup = document.getElementById("callPopup");
+        let navigationUrl = "";
+
+        if (fab && fabMenu) {
+          fab.addEventListener("click", function () {
+            fab.classList.toggle("active");
+            fabMenu.classList.toggle("active");
+          });
+        }
+
+        // Function to show confirmation popup
+        window.showConfirmation = function (message, url) {
+          const popupMessage = document.getElementById("popupMessage");
+          popupMessage.textContent = `Yakin ingin memulai ${message}?`;
+          navigationUrl = url; // Set navigation URL
+          popup.classList.add("active");
+        };
+
+        // Function to cancel the call
+        window.cancelCall = function () {
+          popup.classList.remove("active");
+        };
+
+        // Function to confirm the call and navigate to the URL
+        window.confirmCall = function () {
+          if (navigationUrl) {
+            window.location.href = navigationUrl;
+          }
+        };
+      }
+</script>
+
+</html>

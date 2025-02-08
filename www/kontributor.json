@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "profile_picture": "./img/miftah.jpg",
+      "author": "Miftah",
+      "time_uploaded": "14 Jam Lalu",
+      "content_text": "Saya Agus di Meganti mau melaporkan, ada yang bunyikan sound lumayan keras disekitar rumah saya",
+      "content_image": " "
+    },
+    {
+      "id": "2",
+      "profile_picture": "./img/wahibatul.jpg",
+      "author": "Dewi",
+      "time_uploaded": "14 Jam Lalu",
+      "content_text": "Selamat siang izin menginformasikan terjadi kecelakaan di tol Surabaya.",
+      "content_image": "./img/news2.webp"
+    },
+    {
+      "id": "3",
+      "profile_picture": "./img/miftah.jpg",
+      "author": "Miftah",
+      "time_uploaded": "14 Jam Lalu",
+      "content_text": "Saya Agus di Meganti mau melaporkan, ada yang bunyikan sound lumayan keras disekitar rumah saya",
+      "content_image": " "
+    }
+  ]
+}

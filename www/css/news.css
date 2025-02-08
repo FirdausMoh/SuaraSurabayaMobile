@@ -1,0 +1,253 @@
+body {
+    background-color: #1F1D2B;
+    font-family: Poppins;
+}
+
+.slider-container {
+    display: flex; /* Mengatur semua card dalam satu baris */
+    gap: 10px; /* Memberikan jarak antar card */
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-behavior: smooth; /* Membuat scrolling halus */
+    scrollbar-width: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 120px;
+}
+
+.slider-container::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar */
+}
+
+.slider-container::-webkit-scrollbar-thumb {
+    background: #555; /* Warna slider */
+    border-radius: 4px;
+}
+
+.slider-container::-webkit-scrollbar-track {
+    background: #252836; /* Warna latar belakang track scrollbar */
+}
+.slider-container::-webkit-scrollbar, .card::-webkit-scrollbar {
+  display: none;             /* Menyembunyikan scrollbar di web dan emulator */
+}
+
+.card {
+    display: flex;
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 16px;
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%), url(<path-to-image>) lightgray -78.98px -12px / 136.333% 103.746% no-repeat;
+flex-shrink: 0;
+}
+.card-background{
+    background-size: cover;
+    background-position: right;
+}
+
+
+.card-image {
+width: 322px;
+height: 195px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.news-content i{
+text-align: center;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+vertical-align: middle;
+line-height: 16px;
+}
+.news-content {
+    flex-direction: column;
+    gap: 8px; /* Jarak antar elemen */
+}
+
+.category {
+display: flex;
+padding: 4px;
+align-items: center;
+gap: 4px;
+border-radius: 8px;
+background: #0B7A82;
+color: #EEEFF7;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 16.8px */
+letter-spacing: 0.12px;
+width: fit-content;
+}
+
+.time {
+    display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+  color: #848484;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 16.8px */
+  letter-spacing: 0.12px;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EEEFF7;
+font-size: 16px;
+font-weight: 600;
+line-height: normal;
+}
+
+.descriptionNews{
+color: #EEEFF7;
+font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+height: 180px;
+}
+
+.news-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F1D2B;
+    color: white;
+    width: 100%;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid #302d42; /* Warna dan ketebalan border */
+
+}
+  
+  .news-content {
+    flex: 1;
+  }
+    
+  .news-title {
+    color: #EEEFF7;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    width: 176px;
+  }
+  
+  .news-time {
+    color: #777676;
+font-family: Poppins;
+font-size: 10px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.5px;
+  }
+  
+  .news-actions {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: #E5E5E5;
+  }
+  .category-news{
+    display: flex;
+padding: 4px;
+align-items: center;
+gap: 4px;
+border-radius: 8px;
+background: #0B7A82;
+width: fit-content;
+color: #EEEFF7;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 16.8px */
+letter-spacing: 0.12px;
+margin-bottom: 12px;
+  }
+  
+  .news-actions span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .news-actions i {
+    font-size: 14px;
+  }
+  
+  .news-image {
+    margin-left: 24px;
+  }
+  
+  .news-image img {
+    width: 172px;
+    height: 109px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+/* Container untuk tombol scroll */
+.button-scroll-container {
+  display: flex;
+  overflow-x: auto; /* Memungkinkan scroll horizontal */
+  padding: 10px; /* Jarak padding luar */
+  scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+  position: fixed; /* Membuat tombol selalu terlihat */
+  top: 0; /* Posisi tombol di bagian atas */
+  left: 0;
+  right: 0;
+  background-color: #1F1D2B; /* Warna latar belakang */
+  z-index: 1000;
+}
+
+/* Hilangkan scrollbar di Webkit (Chrome, Safari, dll.) */
+.button-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Wrapper tombol */
+.button-wrapper {
+  display: flex;
+  gap: 12px; 
+  margin-left: 10px;
+}
+/* Tombol */
+.custom-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 36px;
+  background: #2F3142;
+  color: #EEEFF7;
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap; /* Mencegah teks tombol melipat */
+  transition: background-color 0.3s ease;
+}
+
+/* Style tombol aktif */
+.custom-button.active {
+  background: #0c85d0; /* Warna berbeda untuk tombol aktif */
+  color: #ffffff; /* Warna teks */
+}
+

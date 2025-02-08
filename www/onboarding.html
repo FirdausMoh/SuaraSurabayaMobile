@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onboarding</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #1F1D2B;
+        color: #eeeff7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .onboarding-container {
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+      }
+
+      .onboarding-slide {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 656px;
+        padding: 20px;
+      }
+
+      .onboarding-slide.active {
+        display: flex;
+      }
+
+      .icon-container img {
+        width: 320px;
+        height: 246px;
+        margin-bottom: 80px;
+        margin-top: 80px;
+      }
+
+      .dots-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%); /* Center it horizontally */
+        width: 100%;
+      }
+
+      .dot {
+        width: 20px;
+        height: 5px;
+        margin: 0 4px;
+        background-color: #1da1f2;
+        opacity: 0.2;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background-color: #1da1f2;
+        opacity: 100%;
+      }
+
+      .next-button {
+        width: 100%;
+        padding: 15px;
+        background-color: #1da1f2;
+        border: none;
+        border-radius: 8px;
+        color: #eeeff7;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .next-button:hover {
+        background-color: #0c85d0;
+      }
+      .heading {
+        width: 329px;
+        color: #1da1f2;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%; /* 28.8px */
+        margin-bottom: 8px;
+      }
+      .text {
+        width: 329px;
+        color: #eeeff7;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 24px */
+        margin-bottom: 80px ;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="onboarding-container">
+      <div class="dots-container">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+      </div>
+      <div class="onboarding-slide active">
+        <div class="icon-container">
+          <img src="./img2/streamingon.png" alt="Menu +" />
+          <div class="heading">Streaming & Visual Radio</div>
+          <div class="text">Saksikan siaran langsung Suara Surabaya secara audio dan visual</div>
+        </div>
+
+        <button class="next-button" onclick="nextSlide()">Selanjutnya</button>
+      </div>
+
+      <div class="onboarding-slide">
+        <div class="icon-container">
+          <img src="./img2/menu+.png" alt="Streaming & Visual Radio" />
+          <div class="heading">Menu +</div>
+          <div class="text">Fitur interaktif untuk audio/video call dengan penyiar</div>
+        </div>
+        <button class="next-button" onclick="nextSlide()">Selanjutnya</button>
+      </div>
+
+      <div class="onboarding-slide">
+        <div class="icon-container">
+          <img src="./img2/kont.png" alt="Kontributor" />
+          <div class="heading">Kontributor</div>
+          <div class="text">Terhubung dan berbagi informasi dengan pengguna lain</div>
+        </div>
+        <button class="next-button" onclick="redirectToApp()">
+          Masuk Ke Aplikasi
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".onboarding-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      function updateSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+          dots[i].classList.toggle("active", i === index);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlide(currentSlide);
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateSlide(index);
+      }
+
+      function redirectToApp() {
+        window.location.href = "index.html"; // Redirect ke halaman index.html
+      }
+    </script>
+  </body>
+</html>

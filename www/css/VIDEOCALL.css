@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1f1d2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .video-container {
+    width: 100%;
+    height:80%;
+    background-color: black;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  #callStatus {
+    position: relative;
+    text-align: center;
+    margin-top: 30px; /* Menambahkan jarak ke bawah */
+    font-size: 16px;
+    color: white;
+  }
+  
+  
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .small-video {
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 2px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .statu {
+    font-size: 16px;
+    margin: 40px 0;
+  }
+  .call-timer{
+    font-size: 16px;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 36px;
+    margin-top: 10px;
+  }
+  
+  .controls button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 80px;
+  }
+  
+  .mic-button,
+  .camera-button,
+  .speaker-button {
+    background-color: #1da1f2;
+    color: white;
+  }
+  
+  .end-call-button {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  

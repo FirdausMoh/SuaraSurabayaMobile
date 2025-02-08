@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bottom Navigation</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *{
+      font-family: poppins;
+    }
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+      }
+
+      Apply the SVG path as the background
+      .bottom-nav svg {
+        width: 100%;
+        height: 80px;
+        display: block;
+        transform: translateY(0);
+      }
+
+      .bottom-nav .nav-container {
+        position: absolute;
+        top: -58px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .bottom-nav .nav-container a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        z-index: 1;
+      }
+
+      .bottom-nav .nav-container a i {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+
+      .nav-item {
+        opacity: 0.7;
+        margin-top: 80px;
+      }
+
+      .nav-item.active {
+        opacity: 1;
+        color: #1DA1F2;
+      }
+
+      .nav-item.center-space {
+        visibility: hidden;
+      }
+
+      .fab-container {
+        position: absolute;
+        top: -42px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+      }
+
+      .fab {
+        width: 70px;
+        height: 70px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 15;
+        margin-right: 14px;
+      }
+
+      .fab i {
+        font-size: 24px;
+        color: white;
+      }
+
+      .fab-menu {
+        position: relative;
+        display: none;
+      }
+
+      .fab-menu.active {
+        display: flex;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+      }
+
+      .fab-menu .fab-item {
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        background-color: #1DA1F2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .fab-menu .fab-item:hover {
+        background-color: #0c85d0;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #252836;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        z-index: 10000;
+      }
+
+      .popup.active {
+        display: block;
+      }
+
+      .popup .message {
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .popup .button-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .popup button {
+        background-color: #1DA1F2;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .popup button.cancel-button {
+        background-color: #ccc;
+        color: #000;
+      }
+
+      .popup button:hover {
+        opacity: 0.9;
+      }
+      .nav-item.active {
+  color: #1DA1F2; /* Warna biru untuk elemen aktif */
+  opacity: 1;
+}
+
+.nav-item.active i {
+  color: #1DA1F2; /* Warna ikon biru untuk elemen aktif */
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="bottom-nav">
+      <!-- SVG path as the background -->
+      <svg  style="filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));" xmlns="http://www.w3.org/2000/svg" width="412" height="76" viewBox="0 0 412 76" fill="none">
+        <path d="M199.262 40C213.817 40 226.487 31.6098 233.032 19.231C238.196 9.46651 246.721 0 257.766 0H387.935C401.226 0 412 11.1929 412 25V70C412 75.5229 412 80 412 80H0C0 80 0 75.5229 0 70V25C0 11.1929 10.7745 0 24.0654 0H140.757C151.803 0 160.327 9.4665 165.491 19.231C172.037 31.6098 184.706 40 199.262 40Z" fill="#252836"/>
+      </svg>
+
+      <!-- Navigation Links -->
+      <div class="nav-container">
+        <a href="./index.html" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Beranda</span>
+        </a>
+        <a href="./kawanSS.html" class="nav-item">
+          <i class="fas fa-users"></i>
+          <span>Kawan SS</span>
+        </a>
+        <a href="#" class="nav-item center-space">
+          <span>spacer</span>
+        </a>
+        <a href="./kontributor.html" class="nav-item">
+          <i class="fas fa-pen" style="color: #1DA1F2;"></i>
+          <span style="color: #1DA1F2;">Kontributor</span>
+        </a>
+        <a href="./pengaturan.html" class="nav-item">
+          <i class="fas fa-cog"></i>
+          <span>Pengaturan</span>
+        </a>
+      </div>
+
+      <!-- Floating Action Button -->
+      <div class="fab-container">
+        <div class="fab" id="fab">
+          <i style="font-size: 26px;" class="fas fa-plus"></i>
+        </div>
+        <!-- Additional Buttons -->
+        <div class="fab-menu" id="fab-menu">
+          <a
+            href="#"
+            class="fab-item"
+            style="top: -110px; left: 80px;"
+            onclick="showConfirmation('Panggilan Seluler Suara Surabaya', 'audioCall.html')"
+          >
+            <i><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <path d="M24.735 4.49999C21.42 4.49999 18.42 5.84999 16.245 8.00999L17.835 9.59999C18.737 8.69203 19.8097 7.97145 20.9913 7.47973C22.1729 6.98801 23.4401 6.73486 24.72 6.73486C25.9998 6.73486 27.2671 6.98801 28.4487 7.47973C29.6303 7.97145 30.703 8.69203 31.605 9.59999L33.195 8.00999C32.0867 6.89502 30.7684 6.01076 29.3163 5.4083C27.8642 4.80583 26.3071 4.49712 24.735 4.49999Z" fill="#EEEFF7"/>
+              <path d="M30.0451 11.19C28.6337 9.78743 26.7248 9.00021 24.735 9.00021C22.7453 9.00021 20.8364 9.78743 19.425 11.19L21.015 12.78C21.96 11.835 23.28 11.235 24.72 11.235C26.16 11.235 27.4801 11.82 28.4251 12.78L30.0451 11.19ZM22.62 14.385L24.735 16.5L26.85 14.385C26.31 13.83 25.56 13.5 24.735 13.5C23.91 13.5 23.16 13.83 22.62 14.385Z" fill="#EEEFF7"/>
+              <path d="M23.445 21.6L19.665 25.35C15.915 23.205 12.81 20.1 10.665 16.35L14.415 12.57C14.76 12.21 14.91 11.715 14.82 11.22L13.695 5.7C13.56 5.01 12.945 4.5 12.225 4.5H5.99997C5.15997 4.5 4.45497 5.205 4.49997 6.045C4.75497 10.38 6.07497 14.445 8.14497 18C10.515 22.095 13.92 25.485 18 27.855C21.555 29.91 25.62 31.245 29.955 31.5C30.795 31.545 31.5 30.84 31.5 30V23.775C31.5 23.055 30.99 22.44 30.3 22.305L24.795 21.21C24.5553 21.1578 24.3063 21.1661 24.0706 21.2342C23.8349 21.3023 23.6199 21.428 23.445 21.6Z" fill="#EEEFF7"/>
+            </svg></i>
+          </a>
+          <a
+            href="#"
+            class="fab-item"
+            style="top: -180px; left: 0; text-decoration: none; font-size: 24px;"
+            onclick="showConfirmation('Panggilan Audio Suara Surabaya', 'audioCall.html')"
+          >
+            <i class="fas fa-phone"></i>
+          </a>
+          <a
+            href="#"
+            class="fab-item"
+            style="top: -110px; left: -80px;"
+            
+            onclick="showConfirmation('Video Call', 'videoCall.html')"
+          >
+            <i><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <path d="M25.5 15.75V10.5C25.5 10.1022 25.342 9.72064 25.0607 9.43934C24.7794 9.15804 24.3978 9 24 9H6C5.60218 9 5.22064 9.15804 4.93934 9.43934C4.65804 9.72064 4.5 10.1022 4.5 10.5V25.5C4.5 25.8978 4.65804 26.2794 4.93934 26.5607C5.22064 26.842 5.60218 27 6 27H24C24.3978 27 24.7794 26.842 25.0607 26.5607C25.342 26.2794 25.5 25.8978 25.5 25.5V20.25L31.5 26.25V9.75L25.5 15.75ZM21 19.5H16.5V24H13.5V19.5H9V16.5H13.5V12H16.5V16.5H21V19.5Z" fill="#E6E6E6"/>
+            </svg></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="callPopup">
+      <p class="message" id="popupMessage"></p>
+      <div class="button-container">
+        <button onclick="cancelCall()" class="cancel-button">Batalkan</button>
+        <button onclick="confirmCall()" id="confirmButton">Lanjutkan</button>
+      </div>
+    </div>
+
+    <script>
+      let navigationUrl = "";
+
+      document.getElementById("fab").addEventListener("click", function () {
+        const fab = document.getElementById("fab");
+        const fabMenu = document.getElementById("fab-menu");
+
+        // Toggle class active pada tombol FAB dan menu
+        fab.classList.toggle("active");
+        fabMenu.classList.toggle("active");
+      });
+
+      function showConfirmation(message, url) {
+        const popup = document.getElementById("callPopup");
+        const popupMessage = document.getElementById("popupMessage");
+        popupMessage.textContent = `Yakin ingin memulai ${message}?`;
+        navigationUrl = url; // Simpan URL untuk navigasi
+        popup.classList.add("active");
+      }
+
+      function cancelCall() {
+        const popup = document.getElementById("callPopup");
+        popup.classList.remove("active");
+      }
+
+      function confirmCall() {
+        if (navigationUrl) {
+          window.location.href = navigationUrl; // Navigasi ke URL yang sesuai
+        }
+      }
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,75 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1f1d2b;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 120px;
+    height: 120px;
+    margin: 100px auto 20px;
+    border-radius: 50%;
+    display: block;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .status {
+    font-size: 16px;
+    margin-top: 312px;
+    margin-bottom: 24px;
+  }
+  
+  .call-timer {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    margin-top:140px;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .mic-button {
+    background-color: #1da1f2;
+    color: #fff;
+  }
+  
+  .end-call-button {
+    background-color: #ff4d4d;
+    color: #fff;
+  }
+  
+  .speaker-button {
+    background-color: #1da1f2;
+    color: #fff;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  
