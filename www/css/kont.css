@@ -1,5 +1,6 @@
 * {
   font-family: poppins;
+  scrollbar-width: none;
 }
 a{
   text-decoration: none;
